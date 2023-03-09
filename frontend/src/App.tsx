@@ -3,11 +3,8 @@ import { ThemeProvider } from 'styled-components';
 import FontStyles from './components/layout/FontStyles';
 import GlobalStyle from './components/layout/GlobalStyle';
 import Layout from './components/layout/Layout';
+import Dashboard from './pages/Dashboard';
 import darkTheme from './theme';
-
-function MainPage() {
-  return <p>Hello Games Gallery</p>;
-}
 
 function App() {
   return (
@@ -17,7 +14,7 @@ function App() {
         <GlobalStyle />
         <Layout>
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<Dashboard />} />
           </Routes>
         </Layout>
       </ThemeProvider>

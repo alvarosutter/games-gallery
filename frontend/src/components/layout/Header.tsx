@@ -5,7 +5,7 @@ const HeaderStyle = styled.header`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   align-content: center;
   height: fit-content;

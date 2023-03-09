@@ -1,15 +1,22 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const LogoStyle = styled.p`
+const LogoStyle = styled(Link)`
   color: ${({ theme }) => theme.colors.primaryText};
   font-family: ${({ theme }) => theme.fonts.headersFont}, sans-serif;
-  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   letter-spacing: 0.15rem;
   text-align: center;
+  text-decoration: none;
   margin: 0;
-  padding: 10px;
+  padding: 8px;
   width: fit-content;
+  &:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+    filter: brightness(1.1);
+  }
 `;
 
 const LogoHighlight = styled.span`
@@ -18,7 +25,7 @@ const LogoHighlight = styled.span`
 
 function Logo() {
   return (
-    <LogoStyle>
+    <LogoStyle to="/">
       <LogoHighlight>GAMES</LogoHighlight>GALLERY
     </LogoStyle>
   );
