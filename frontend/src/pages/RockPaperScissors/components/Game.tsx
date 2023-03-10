@@ -185,7 +185,7 @@ function Game({ game, score, setScore }: GameProps) {
       {!gameRunning && (
         <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Again" score={score}>
           <ResultBox>
-            <ResultText>{result}</ResultText>
+            <ResultText style={{ color: game.color }}>{result.toLocaleUpperCase()}</ResultText>
             <PicksBox>
               <PickResult title={picks.player} style={{ borderColor: `${getPickStyle(picks.player)}` }}>
                 {picks.player}

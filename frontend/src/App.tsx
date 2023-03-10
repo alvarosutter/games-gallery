@@ -4,6 +4,7 @@ import FontStyles from './components/layout/FontStyles';
 import GlobalStyle from './components/layout/GlobalStyle';
 import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
+import PigGame from './pages/PigGame/PigGame';
 import RockPaperScissors from './pages/RockPaperScissors/RockPaperScissors';
 import darkTheme from './theme';
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/rockpaperscissors" element={<RockPaperScissors />} />
+            <Route path="/piggame" element={<PigGame />} />
           </Routes>
         </Layout>
       </ThemeProvider>
