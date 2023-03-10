@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const headerHeight = '50px';
+
 const HeaderStyle = styled.header`
   background-color: ${({ theme }) => theme.colors.headerBg};
   display: flex;
@@ -8,7 +10,7 @@ const HeaderStyle = styled.header`
   justify-content: center;
   align-items: center;
   align-content: center;
-  height: fit-content;
+  height: ${headerHeight};
   margin: 0;
   padding: 2px 15px;
   user-select: none;

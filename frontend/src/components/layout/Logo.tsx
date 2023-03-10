@@ -14,7 +14,6 @@ const LogoStyle = styled(Link)`
   width: fit-content;
   &:hover {
     cursor: pointer;
-    transform: scale(0.9);
     filter: brightness(1.1);
   }
 `;

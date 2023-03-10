@@ -7,20 +7,13 @@ declare module 'styled-components' {
       background: string;
       headerBg: string;
       footerBg: string;
-      inputBg: string;
+      scoreBg: string;
       primaryText: string;
       altText: string;
       primary: string;
       primaryDarker: string;
       onPrimary: string;
-      secondary: string;
-      onSecondary: string;
-      button: string;
-      onButton: string;
-      danger: string;
-      onDanger: string;
       scrollbarBg: string;
-      itemShadow: string;
     };
     fonts: {
       headersFont: 'Poppins';
@@ -29,8 +22,8 @@ declare module 'styled-components' {
       btnFont: 'Poppins';
     };
     fontSizes: {
-      xsmall: '0.8rem';
-      small: '1.0rem';
+      xsmall: '1.0rem';
+      small: '1.2rem';
       medium: '1.5rem';
       large: '3.0rem';
       xlarge: '4.5rem';

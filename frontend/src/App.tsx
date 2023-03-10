@@ -4,6 +4,7 @@ import FontStyles from './components/layout/FontStyles';
 import GlobalStyle from './components/layout/GlobalStyle';
 import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
+import RockPaperScissors from './pages/RockPaperScissors/RockPaperScissors';
 import darkTheme from './theme';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/rockpaperscissors" element={<RockPaperScissors />} />
           </Routes>
         </Layout>
       </ThemeProvider>

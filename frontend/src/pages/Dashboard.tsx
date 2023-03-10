@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { dicePoker, hangman, higherLower, pigGame, rockPaperScissors, simonsgame, memory } from '../assets/icons';
+import GameLogo from '../components/styles/GameLogo.styled';
 
 const GamesContainer = styled.section`
   display: flex;
@@ -21,16 +22,6 @@ const GameBox = styled.div`
   align-items: center;
   width: 300px;
   height: 150px;
-`;
-
-const GameLogo = styled.img`
-  width: 200px;
-  height: 150px;
-  cursor: pointer;
-  @media (min-width: 350px) {
-    width: 300px;
-    height: 150px;
-  }
 `;
 
 function Dashboard() {

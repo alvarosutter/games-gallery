@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
+export const footerHeight = '40px';
+
 const FooterStyle = styled.footer`
-  background-color: ${({ theme }) => theme.colors.footerBg};
+  background-color: ${({ theme }) => theme.colors.background};
   width: 100%;
-  height: fit-content;
-  max-height: fit-content;
+  height: ${footerHeight};
   user-select: none;
 `;
 
 const Text = styled.p`
   color: ${({ theme }) => theme.colors.altText};
   font-family: ${({ theme }) => theme.fonts.altFont}, sans-serif;
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  font-size: 0.8rem;
   font-weight: ${({ theme }) => theme.fontWeights.light};
   letter-spacing: 0.05rem;
   text-align: center;
