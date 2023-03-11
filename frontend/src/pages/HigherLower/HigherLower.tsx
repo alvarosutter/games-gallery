@@ -1,0 +1,26 @@
+import { useState } from 'react';
+import { higherLower } from '../../assets/icons';
+import GameCover from '../../components/ui/GameCover';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import Game from './components/Game';
+
+function PigGame() {
+  const name = 'Higher-Lower';
+  const [gameRunning, setGameRunning] = useState(false);
+  const [score, setScore] = useLocalStorage(`${name}-Score`, { highestScore: 0 });
+
+  const game = {
+    name,
+    description:
+      'Play the Higher or Lower guest game against our computer. Pick if the next card will be higher or lower than the current one and test your luck!',
+    logo: higherLower,
+    color: ' #7ed957',
+  };
+
+  if (gameRunning) {
+    return <Game game={game} score={score} setScore={setScore} />;
+  }
+  return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score} />;
+}
+
+export default PigGame;
