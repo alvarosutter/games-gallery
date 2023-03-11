@@ -5,6 +5,7 @@ import GlobalStyle from './components/layout/GlobalStyle';
 import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 import DicePoker from './pages/DicePoker/DicePoker';
+import Hangman from './pages/Hangman/Hangman';
 import HigherLower from './pages/HigherLower/HigherLower';
 import PigGame from './pages/PigGame/PigGame';
 import RockPaperScissors from './pages/RockPaperScissors/RockPaperScissors';
@@ -23,6 +24,7 @@ function App() {
             <Route path="/piggame" element={<PigGame />} />
             <Route path="/higherLower" element={<HigherLower />} />
             <Route path="/dicepoker" element={<DicePoker />} />
+            <Route path="/hangman" element={<Hangman />} />
           </Routes>
         </Layout>
       </ThemeProvider>
