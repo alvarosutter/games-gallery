@@ -94,7 +94,7 @@ function Game({ game, score, setScore }: GameProps) {
   }
 
   function resetDeck() {
-    setCards([...spades]);
+    setCards([...spades, ...hearts, ...diamonds, ...clubs]);
     setCard(getRandomCard());
   }
 
