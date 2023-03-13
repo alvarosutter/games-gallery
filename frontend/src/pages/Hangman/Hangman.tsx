@@ -4,7 +4,7 @@ import GameCover from '../../components/ui/GameCover';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Game from './components/Game';
 
-function RockPaperScissors() {
+function Hangman() {
   const name = 'Hangman';
   const [gameRunning, setGameRunning] = useState(false);
   const [score, setScore] = useLocalStorage(`${name}-score`, { win: 0, lost: 0 });
@@ -23,4 +23,4 @@ function RockPaperScissors() {
   return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score} />;
 }
 
-export default RockPaperScissors;
+export default Hangman;

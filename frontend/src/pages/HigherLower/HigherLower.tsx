@@ -4,7 +4,7 @@ import GameCover from '../../components/ui/GameCover';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Game from './components/Game';
 
-function PigGame() {
+function HigherLower() {
   const name = 'Higher-Lower';
   const [gameRunning, setGameRunning] = useState(false);
   const [score, setScore] = useLocalStorage(`${name}-Score`, { highestScore: 0 });
@@ -23,4 +23,4 @@ function PigGame() {
   return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score} />;
 }
 
-export default PigGame;
+export default HigherLower;
