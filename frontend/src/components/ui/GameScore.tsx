@@ -5,7 +5,6 @@ export type Score = {
   draw?: number;
   lost?: number;
   highestScore?: number;
-  bestTime?: Date;
   highestLevel?: number;
 };
 
@@ -83,12 +82,6 @@ function GameScore({ gameColor, gameScore }: ScoreProps) {
         <Box>
           <Label>Highest Level</Label>
           <Text>{gameScore.highestLevel}</Text>
-        </Box>
-      )}
-      {gameScore.bestTime !== undefined && (
-        <Box>
-          <Label>Best Time</Label>
-          <Text>{gameScore.bestTime.getTime() / 60000} min</Text>
         </Box>
       )}
     </Container>

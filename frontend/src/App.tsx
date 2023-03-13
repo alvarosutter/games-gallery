@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import DicePoker from './pages/DicePoker/DicePoker';
 import Hangman from './pages/Hangman/Hangman';
 import HigherLower from './pages/HigherLower/HigherLower';
+import Memory from './pages/Memory/Memory';
 import PigGame from './pages/PigGame/PigGame';
 import RockPaperScissors from './pages/RockPaperScissors/RockPaperScissors';
 import SimonGame from './pages/SimonGame/SimonGame';
@@ -27,6 +28,7 @@ function App() {
             <Route path="/dicepoker" element={<DicePoker />} />
             <Route path="/hangman" element={<Hangman />} />
             <Route path="/simongame" element={<SimonGame />} />
+            <Route path="/memory" element={<Memory />} />
           </Routes>
         </Layout>
       </ThemeProvider>

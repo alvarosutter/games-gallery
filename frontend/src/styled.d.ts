@@ -14,6 +14,7 @@ declare module 'styled-components' {
       primaryDarker: string;
       onPrimary: string;
       scrollbarBg: string;
+      btnText: string;
     };
     fonts: {
       headersFont: 'Poppins';

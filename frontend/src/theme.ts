@@ -13,6 +13,7 @@ const darkTheme: DefaultTheme = {
     primaryDarker: '#33dd77',
     onPrimary: '#F5F5F5',
     scrollbarBg: '#303030',
+    btnText: '#181818',
   },
   fonts: {
     headersFont: 'Poppins',
