@@ -124,8 +124,8 @@ function Game({ game, score, setScore }: GameProps) {
         resetPicks();
         if (pairs === cards.length / 2 - 1) {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          if (turns < score.highestScore!) {
-            setScore({ highestScore: turns + 1 });
+          if (turns < score.highestScore! || score.highestScore === undefined) {
+            setScore({ highestScore: turns });
           }
           resetPairs();
           setGameRunning(false);

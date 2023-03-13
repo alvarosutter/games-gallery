@@ -7,7 +7,7 @@ import Game from './components/Game';
 function Memory() {
   const name = 'Memory';
   const [gameRunning, setGameRunning] = useState(false);
-  const [score, setScore] = useLocalStorage(`${name}-Score`, { highestScore: 0 });
+  const [score, setScore] = useLocalStorage(`${name}-Score`, { highestScore: undefined });
 
   const game = {
     name,
