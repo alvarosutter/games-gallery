@@ -9,6 +9,7 @@ import Hangman from './pages/Hangman/Hangman';
 import HigherLower from './pages/HigherLower/HigherLower';
 import PigGame from './pages/PigGame/PigGame';
 import RockPaperScissors from './pages/RockPaperScissors/RockPaperScissors';
+import SimonGame from './pages/SimonGame/SimonGame';
 import darkTheme from './theme';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/higherLower" element={<HigherLower />} />
             <Route path="/dicepoker" element={<DicePoker />} />
             <Route path="/hangman" element={<Hangman />} />
+            <Route path="/simongame" element={<SimonGame />} />
           </Routes>
         </Layout>
       </ThemeProvider>

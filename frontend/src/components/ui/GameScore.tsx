@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-export type Score = { win?: number; draw?: number; lost?: number; highestScore?: number; bestTime?: Date };
+export type Score = {
+  win?: number;
+  draw?: number;
+  lost?: number;
+  highestScore?: number;
+  bestTime?: Date;
+  highestLevel?: number;
+};
 
 const Container = styled.section`
   display: flex;
@@ -70,6 +77,12 @@ function GameScore({ gameColor, gameScore }: ScoreProps) {
         <Box>
           <Label>Highest Score</Label>
           <Text>{gameScore.highestScore}</Text>
+        </Box>
+      )}
+      {gameScore.highestLevel !== undefined && (
+        <Box>
+          <Label>Highest Level</Label>
+          <Text>{gameScore.highestLevel}</Text>
         </Box>
       )}
       {gameScore.bestTime !== undefined && (

@@ -4,4 +4,4 @@ export { default as pigGame } from './pigGame.png';
 export { default as dicePoker } from './dicePoker.png';
 export { default as hangman } from './hangman.png';
 export { default as memory } from './memory.png';
-export { default as simonsgame } from './simonsgame.png';
+export { default as simongame } from './simongame.png';

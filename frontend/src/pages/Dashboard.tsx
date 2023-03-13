@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { dicePoker, hangman, higherLower, pigGame, rockPaperScissors, simonsgame, memory } from '../assets/icons';
+import { dicePoker, hangman, higherLower, pigGame, rockPaperScissors, simongame, memory } from '../assets/icons';
 import GameLogo from '../components/styles/GameLogo.styled';
 
 const GamesContainer = styled.section`
@@ -53,8 +53,8 @@ function Dashboard() {
         </Link>
       </GameBox>
       <GameBox>
-        <Link to="/simonsgame">
-          <GameLogo src={simonsgame} alt="simonsgame" />
+        <Link to="/simongame">
+          <GameLogo src={simongame} alt="simongame" />
         </Link>
       </GameBox>
       <GameBox>
