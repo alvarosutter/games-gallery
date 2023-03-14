@@ -101,18 +101,10 @@ function Game({ game, score, setScore }: GameProps) {
   function check(playerPick: string) {
     const nextCard: Card = getRandomCard();
 
-    if (playerPick === 'higher' && card.value <= nextCard.value) {
-      increment();
-      if (deck.length === 1) {
-        setResult(true);
-        setScore({ highestScore: counter + 1 });
-        setGameRunning(false);
-        return;
-      }
-      setCard(nextCard);
-      return;
-    }
-    if (playerPick === 'lower' && card.value >= nextCard.value) {
+    if (
+      (playerPick === 'higher' && card.value <= nextCard.value) ||
+      (playerPick === 'lower' && card.value >= nextCard.value)
+    ) {
       increment();
       if (deck.length === 1) {
         setResult(true);
@@ -129,6 +121,7 @@ function Game({ game, score, setScore }: GameProps) {
   }
 
   useEffect(() => {
+    // removes the card from the deck
     const index = deck.findIndex((e) => e.unicode === card.unicode);
     deck.splice(index, 1);
 

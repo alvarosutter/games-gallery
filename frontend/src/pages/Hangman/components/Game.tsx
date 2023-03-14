@@ -184,6 +184,7 @@ function Game({ game, score, setScore }: GameProps) {
       }
     }
 
+    /** Returns true if all the letters of the word are present in the guesses */
     const check = word
       .split('')
       .filter((letter) => letter !== ' ')

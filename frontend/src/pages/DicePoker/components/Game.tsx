@@ -26,7 +26,7 @@ const DiceWrapper = styled.div`
   align-items: center;
   background-color: #ffffffee;
   color: #000000;
-  border: 4px solid #c9b07d;
+  border: 4px solid;
   border-radius: 10px;
   width: 50px;
   height: 50px;
@@ -141,7 +141,7 @@ function Game({ game, score, setScore }: GameProps) {
                 <DicesBox>
                   {playerDices.map((dice, i) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <DiceWrapper key={dice.letter + i}>
+                    <DiceWrapper key={dice.letter + i} style={{ borderColor: game.color }}>
                       <DiceText>{dice.letter}</DiceText>
                     </DiceWrapper>
                   ))}
@@ -154,7 +154,7 @@ function Game({ game, score, setScore }: GameProps) {
                 <DicesBox>
                   {pcDices.map((dice, i) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <DiceWrapper key={dice.letter + i}>
+                    <DiceWrapper key={dice.letter + i} style={{ borderColor: game.color }}>
                       <DiceText>{dice.letter}</DiceText>
                     </DiceWrapper>
                   ))}

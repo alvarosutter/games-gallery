@@ -51,6 +51,7 @@ const countries = [
   'Vatican City',
 ];
 
+/** Returns a random country name */
 function generateWord(): string {
   const randomNumber = Math.floor(Math.random() * countries.length);
   return countries[randomNumber].toUpperCase();

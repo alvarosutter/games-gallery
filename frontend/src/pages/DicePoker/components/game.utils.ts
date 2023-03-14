@@ -30,29 +30,36 @@ export const dicesSet = [
   },
 ];
 
+/** Returns an element of the diceSet array at random */
 function roll(): Dice {
   const randomNumber = Math.floor(Math.random() * 6);
   return dicesSet[randomNumber];
 }
+
+/** Sorts the dices array for an better presentation of the result */
 async function sort(dices: Dice[]) {
   return dices.sort((a, b) => a.value - b.value);
 }
 
+/** Generates an array of 5 random dice values */
 export async function getDices() {
   const dices = await sort([roll(), roll(), roll(), roll(), roll()]);
   return dices;
 }
 
+/** Returns an array with only the dice value and without the letter */
 function getDicesValues(dices: Dice[]) {
   return dices.map((dice) => dice.value);
 }
 
+/** Returns the sum of all the values in an array */
 function getSum(arr: number[]) {
   return arr.reduce((acc, num) => acc + num, 0);
 }
 
 function checkDices(dices: Dice[]) {
   const dicesValues = getDicesValues(dices);
+  // Array with all the duplicates in order to find pairs, triples, and so on
   const duplicates = dicesValues.filter((dice) => dicesValues.indexOf(dice) !== dicesValues.lastIndexOf(dice));
   const sum = getSum(duplicates);
 

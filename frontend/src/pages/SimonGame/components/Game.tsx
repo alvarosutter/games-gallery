@@ -91,6 +91,7 @@ function Game({ game, score, setScore }: GameProps) {
     setSimonSequence(sequence);
   }
 
+  /** Highlights the buttons in the sequence */
   function highlightButton(index = 0) {
     const animationDelay = 400;
     const animationDuration = 250;
@@ -141,10 +142,12 @@ function Game({ game, score, setScore }: GameProps) {
       }, 250);
   }
 
+  /** Picks the first color when the game starts */
   useEffect(() => {
     addNextColor();
   }, [gameRunning]);
 
+  /** Highlights the button(s) every time the sequence change */
   useEffect(() => {
     if (simonSequence.length > 0) highlightButton();
   }, [simonSequence]);

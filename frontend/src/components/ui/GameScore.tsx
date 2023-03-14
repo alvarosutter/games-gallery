@@ -84,6 +84,12 @@ function GameScore({ gameColor, gameScore }: ScoreProps) {
           <Text>{gameScore.highestLevel}</Text>
         </Box>
       )}
+      {gameScore.highestScore === undefined && (
+        <Box>
+          <Label>Highest Score</Label>
+          <Text> - </Text>
+        </Box>
+      )}
     </Container>
   );
 }

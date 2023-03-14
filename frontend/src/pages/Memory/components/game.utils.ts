@@ -22,6 +22,7 @@ export const cardsSet: Card[] = [
   '🚀',
 ];
 
+/** Returns an array with all the cards in random positions */
 export async function generateSet(): Promise<Card[]> {
   const randomSet: Card[] = [];
   const cards: Card[] = [...cardsSet];

@@ -98,21 +98,25 @@ function Game({ game, score, setScore }: GameProps) {
   }
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    // Disables the button
     e.currentTarget.disabled = true;
     if (picks < 2) {
       incrementPicks();
       targets.push(e.currentTarget);
+      // Makes the card's front visible
       e.currentTarget.style.opacity = '1';
       if (picks === 1) {
         incrementTurns();
         const prevCard = targets[0];
         const currentCard = targets[1];
         if (prevCard.value === currentCard.value) {
+          // If a pair is found makes them visible and disables them
           prevCard.style.opacity = '1';
           prevCard.disabled = true;
           e.currentTarget.disabled = true;
           incrementPairs();
         } else {
+          // Makes the card invisible after some time and makes the buttons active again
           setTimeout(() => {
             prevCard.style.opacity = '0';
             currentCard.style.opacity = '0';
@@ -120,8 +124,11 @@ function Game({ game, score, setScore }: GameProps) {
           prevCard.disabled = false;
           currentCard.disabled = false;
         }
+        // Resets the targets array and picks
         setTargets([]);
         resetPicks();
+
+        // Checks if all the pairs have been found
         if (pairs === cards.length / 2 - 1) {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           if (turns < score.highestScore! || score.highestScore === undefined) {
