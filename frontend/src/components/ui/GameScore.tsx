@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import styled from 'styled-components';
 
 export type Score = {
@@ -52,44 +53,19 @@ interface ScoreProps {
 }
 
 function GameScore({ gameColor, gameScore }: ScoreProps) {
+  const entries = Object.entries(gameScore);
+
   return (
     <Container style={{ outlineColor: gameColor }}>
-      {gameScore.win !== undefined && (
-        <Box>
-          <Label>Win</Label>
-          <Text>{gameScore.win}</Text>
-        </Box>
-      )}
-      {gameScore.draw !== undefined && (
-        <Box>
-          <Label>Draw</Label>
-          <Text>{gameScore.draw}</Text>
-        </Box>
-      )}
-      {gameScore.lost !== undefined && (
-        <Box>
-          <Label>Lost</Label>
-          <Text>{gameScore.lost}</Text>
-        </Box>
-      )}
-      {gameScore.highestScore !== undefined && (
-        <Box>
-          <Label>Highest Score</Label>
-          <Text>{gameScore.highestScore}</Text>
-        </Box>
-      )}
-      {gameScore.highestLevel !== undefined && (
-        <Box>
-          <Label>Highest Level</Label>
-          <Text>{gameScore.highestLevel}</Text>
-        </Box>
-      )}
-      {gameScore.highestScore === undefined && (
-        <Box>
-          <Label>Highest Score</Label>
-          <Text> - </Text>
-        </Box>
-      )}
+      {entries.map((entry) => {
+        const label = entry[0].charAt(0).toUpperCase() + entry[0].slice(1);
+        return (
+          <Box>
+            <Label>{label}</Label>
+            <Text>{entry[1]}</Text>
+          </Box>
+        );
+      })}
     </Container>
   );
 }
