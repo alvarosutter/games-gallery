@@ -37,6 +37,7 @@ function roll(): Dice {
 }
 
 /** Sorts the dices array for an better presentation of the result */
+// eslint-disable-next-line @typescript-eslint/require-await
 async function sort(dices: Dice[]) {
   return dices.sort((a, b) => a.value - b.value);
 }

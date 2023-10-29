@@ -130,7 +130,6 @@ function Game({ game, score, setScore }: GameProps) {
 
         // Checks if all the pairs have been found
         if (pairs === cards.length / 2 - 1) {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           if (turns < score.highestScore! || score.highestScore === undefined) {
             setScore({ highestScore: turns });
           }
@@ -142,6 +141,7 @@ function Game({ game, score, setScore }: GameProps) {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     startGame();
   }, [gameRunning]);
 

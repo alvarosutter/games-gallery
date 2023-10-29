@@ -43,6 +43,7 @@ interface CoverProps {
   game: { name: string; description?: string; logo?: string; color: string };
   score: Score;
   onClick: () => void;
+  // eslint-disable-next-line react/require-default-props
   children?: React.ReactNode | React.ReactNode[];
   buttonText: string;
 }

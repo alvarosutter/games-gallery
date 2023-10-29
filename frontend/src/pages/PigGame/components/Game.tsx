@@ -71,7 +71,6 @@ function Game({ game, score, setScore }: GameProps) {
       setGameRunning(false);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     if (counter > score.highestScore!) {
       setScore({ highestScore: counter });
     }

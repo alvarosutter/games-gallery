@@ -125,7 +125,6 @@ function Game({ game, score, setScore }: GameProps) {
     const index = deck.findIndex((e) => e.unicode === card.unicode);
     deck.splice(index, 1);
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     if (counter > score.highestScore!) {
       setScore({ highestScore: counter });
     }

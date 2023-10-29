@@ -102,10 +102,8 @@ function Game({ game, score, setScore }: GameProps) {
     if (simonSequence[index] === 'blue') ref = blueRef;
 
     setTimeout(() => {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       ref!.current!.style.filter = 'brightness(2)';
       setTimeout(() => {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ref!.current!.style.filter = 'brightness(1)';
         if (index < simonSequence.length - 1) highlightButton(index + 1);
       }, animationDuration);
@@ -117,6 +115,7 @@ function Game({ game, score, setScore }: GameProps) {
     if (gameRunning)
       setTimeout(() => {
         if (simonSequence[playingIndex] === clickColor) {
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
           audio.play();
           if (playingIndex === simonSequence.length - 1) {
             setTimeout(() => {
@@ -132,8 +131,8 @@ function Game({ game, score, setScore }: GameProps) {
             setPlayingIndex(playingIndex + 1);
           }
         } else {
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
           wrongAudio.play();
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           if (simonSequence.length > score.highestLevel!) {
             setScore({ highestLevel: counter });
           }

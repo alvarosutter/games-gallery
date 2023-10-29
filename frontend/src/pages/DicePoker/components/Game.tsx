@@ -114,6 +114,7 @@ function Game({ game, score, setScore }: GameProps) {
         <PlayGameBtn
           title="Roll Dices"
           onClick={() => {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             playGame();
           }}
           style={{ margin: 'auto', backgroundColor: game.color }}
@@ -127,6 +128,7 @@ function Game({ game, score, setScore }: GameProps) {
             setGameRunning(true);
             setPlayerDices([]);
             setPcDices([]);
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             playGame();
           }}
           game={game}

@@ -18,9 +18,9 @@ function DicePoker() {
   };
 
   if (gameRunning) {
-    return <Game game={game} score={score} setScore={setScore} />;
+    return <Game game={game} score={score as object} setScore={setScore as () => void} />;
   }
-  return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score} />;
+  return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score as object} />;
 }
 
 export default DicePoker;

@@ -170,11 +170,10 @@ function Game({ game, score, setScore }: GameProps) {
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const guess = guessRef.current?.value;
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
     guesses.push(guess!.toUpperCase());
     incrementTurns();
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     if (!word.includes(guess!.toUpperCase())) {
       decrementLives();
       if (lives === 1) {
