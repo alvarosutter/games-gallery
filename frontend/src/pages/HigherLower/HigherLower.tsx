@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { higherLower } from '../../assets/icons';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import Game from './components/Game';
+import HigherLowerGame from './components/HigherLowerGame';
 import Score from '../../types/score';
 import { StartGameCover } from '../../components/ui/GameCover';
 
@@ -20,7 +20,11 @@ function HigherLower() {
 
   if (gameRunning) {
     return (
-      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+      <HigherLowerGame
+        game={game}
+        score={score as Score}
+        setScore={setScore as React.Dispatch<React.SetStateAction<Score>>}
+      />
     );
   }
 

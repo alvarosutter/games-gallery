@@ -55,7 +55,7 @@ function GameScore({ gameColor, gameScore }: ScoreProps) {
         return (
           <Box key={entry[0]}>
             <Label>{label}</Label>
-            <Text>{value}</Text>
+            <Text>{value === -1 ? '-' : value}</Text>
           </Box>
         );
       })}

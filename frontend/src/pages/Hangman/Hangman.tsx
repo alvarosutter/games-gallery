@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { hangman } from '../../assets/icons';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import Game from './components/HangmanGame';
+import HangmanGame from './components/HangmanGame';
 import { StartGameCover } from '../../components/ui/GameCover';
 import Score from '../../types/score';
 
@@ -20,7 +20,11 @@ function Hangman() {
 
   if (gameRunning) {
     return (
-      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+      <HangmanGame
+        game={game}
+        score={score as Score}
+        setScore={setScore as React.Dispatch<React.SetStateAction<Score>>}
+      />
     );
   }
 

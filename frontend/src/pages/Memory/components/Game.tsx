@@ -129,7 +129,7 @@ function Game({ game, score, setScore }: GameProps) {
 
         // Checks if all the pairs have been found
         if (pairs === cards.length / 2 - 1) {
-          if (turns < score.highestScore! || score.highestScore === undefined) {
+          if (turns < score.highestScore! || score.highestScore === -1) {
             setScore({ highestScore: turns });
           }
           resetPairs();

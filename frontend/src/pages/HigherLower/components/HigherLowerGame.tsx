@@ -82,7 +82,7 @@ interface GameProps {
   setScore: (score: Score) => void;
 }
 
-function Game({ game, score, setScore }: GameProps) {
+function HigherLowerGame({ game, score, setScore }: GameProps) {
   const [gameRunning, setGameRunning] = useState(true);
   const { counter, increment, reset } = useCounter();
   const [result, setResult] = useState(false);
@@ -176,4 +176,4 @@ function Game({ game, score, setScore }: GameProps) {
   );
 }
 
-export default Game;
+export default HigherLowerGame;

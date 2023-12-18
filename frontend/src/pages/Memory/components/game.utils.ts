@@ -22,7 +22,6 @@ export const cardsSet: Card[] = [
   '🚀',
 ];
 
-/** Returns an array with all the cards in random positions */
 // eslint-disable-next-line @typescript-eslint/require-await
 export async function generateSet(): Promise<Card[]> {
   const randomSet: Card[] = [];

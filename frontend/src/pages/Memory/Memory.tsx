@@ -8,7 +8,7 @@ import Score from '../../types/score';
 function Memory() {
   const name = 'Memory';
   const [gameRunning, setGameRunning] = useState(false);
-  const [score, setScore] = useLocalStorage(`${name}-Score`, { highestScore: undefined });
+  const [score, setScore] = useLocalStorage(`${name}-Score`, { highestScore: -1 });
 
   const game = {
     name,
