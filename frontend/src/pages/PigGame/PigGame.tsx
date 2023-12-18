@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { pigGame } from '../../assets/icons';
-import GameCover from '../../components/ui/GameCover';
+
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Game from './components/Game';
+import Score from '../../types/score';
+import { StartGameCover } from '../../components/ui/GameCover';
 
 function PigGame() {
   const name = 'Pig-Game';
@@ -18,9 +20,12 @@ function PigGame() {
   };
 
   if (gameRunning) {
-    return <Game game={game} score={score as object} setScore={setScore as () => void} />;
+    return (
+      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+    );
   }
-  return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score as object} />;
+
+  return <StartGameCover game={game} score={score as Score} onClick={() => setGameRunning(true)} />;
 }
 
 export default PigGame;

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { simongame } from '../../assets/icons';
-import GameCover from '../../components/ui/GameCover';
+import { StartGameCover } from '../../components/ui/GameCover';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import Game from './components/Game';
+import Score from '../../types/score';
 
 function SimonGame() {
   const name = 'Simon-Game';
@@ -18,9 +19,12 @@ function SimonGame() {
   };
 
   if (gameRunning) {
-    return <Game game={game} score={score as object} setScore={setScore as () => void} />;
+    return (
+      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+    );
   }
-  return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score as object} />;
+
+  return <StartGameCover game={game} score={score as Score} onClick={() => setGameRunning(true)} />;
 }
 
 export default SimonGame;

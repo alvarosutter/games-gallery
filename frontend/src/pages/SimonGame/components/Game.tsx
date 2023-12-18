@@ -1,9 +1,9 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import GameCover from '../../../components/ui/GameCover';
-import { Score } from '../../../components/ui/GameScore';
 import useCounter from '../../../hooks/useCounter';
 import { redSound, greenSound, yellowSound, blueSound, wrongSound } from '../assets';
+import Score from '../../../types/score';
+import { EndGameCover } from '../../../components/ui/GameCover';
 
 const GameContainer = styled.div`
   display: flex;
@@ -203,7 +203,7 @@ function Game({ game, score, setScore }: GameProps) {
         </GameContainer>
       )}
       {!gameRunning && (
-        <GameCover
+        <EndGameCover
           onClick={() => {
             setSimonSequence([]);
             setPlayingIndex(0);
@@ -213,15 +213,14 @@ function Game({ game, score, setScore }: GameProps) {
               setGameRunning(true);
             }, 1000);
           }}
-          game={game}
-          buttonText="Play Again"
+          gameColor={game.color}
           score={score}
         >
           <ResultBox>
             <GameResult style={{ color: game.color }}>{result ? 'YOU WIN!' : 'YOU LOSE!'}</GameResult>
             <Level>LEVEL {counter}</Level>
           </ResultBox>
-        </GameCover>
+        </EndGameCover>
       )}
     </>
   );

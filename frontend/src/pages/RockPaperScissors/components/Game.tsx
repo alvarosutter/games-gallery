@@ -1,9 +1,8 @@
-/* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import GameCover from '../../../components/ui/GameCover';
-import { Score } from '../../../components/ui/GameScore';
 import useCounter from '../../../hooks/useCounter';
+import Score from '../../../types/score';
+import { EndGameCover } from '../../../components/ui/GameCover';
 
 function getPickStyle(pick: string) {
   if (pick === '✊') return '#FF914D';
@@ -183,7 +182,7 @@ function Game({ game, score, setScore }: GameProps) {
         </GameContainer>
       )}
       {!gameRunning && (
-        <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Again" score={score}>
+        <EndGameCover onClick={() => setGameRunning(true)} gameColor={game.color} score={score}>
           <ResultBox>
             <ResultText style={{ color: game.color }}>{result.toLocaleUpperCase()}</ResultText>
             <PicksBox>
@@ -196,7 +195,7 @@ function Game({ game, score, setScore }: GameProps) {
               </PickResult>
             </PicksBox>
           </ResultBox>
-        </GameCover>
+        </EndGameCover>
       )}
     </>
   );

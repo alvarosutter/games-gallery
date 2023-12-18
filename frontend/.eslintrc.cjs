@@ -26,5 +26,18 @@ module.exports = {
     'prettier/prettier': 'error',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react-hooks/exhaustive-deps': 'off',
+    'react/require-default-props': [
+      'error',
+      {
+        functions: 'defaultArguments',
+      },
+    ],
+    'react/jsx-props-no-spreading': [
+      'error',
+      {
+        custom: 'ignore',
+      },
+    ],
+    '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: { attributes: false } }],
   },
 };

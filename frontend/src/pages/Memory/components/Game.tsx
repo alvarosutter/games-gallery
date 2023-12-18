@@ -1,11 +1,10 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/jsx-key */
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import GameCover from '../../../components/ui/GameCover';
-import { Score } from '../../../components/ui/GameScore';
+
 import useCounter from '../../../hooks/useCounter';
 import { Card, generateSet } from './game.utils';
+import Score from '../../../types/score';
+import { EndGameCover } from '../../../components/ui/GameCover';
 
 const GameContainer = styled.div`
   display: grid;
@@ -149,10 +148,10 @@ function Game({ game, score, setScore }: GameProps) {
     <>
       {gameRunning && (
         <GameContainer>
-          {cards.map((card, index) => (
+          {cards.map((card) => (
+            // eslint-disable-next-line react/jsx-key
             <CardWrapper style={{ backgroundColor: game.color }}>
               <CardText
-                key={card + index}
                 onClick={(e) => {
                   handleClick(e);
                 }}
@@ -165,20 +164,19 @@ function Game({ game, score, setScore }: GameProps) {
         </GameContainer>
       )}
       {!gameRunning && (
-        <GameCover
+        <EndGameCover
           onClick={() => {
             resetTurns();
             setGameRunning(true);
           }}
-          game={game}
-          buttonText="Play Again"
+          gameColor={game.color}
           score={score}
         >
           <ResultBox>
             <GameResult style={{ color: game.color }}>YOU WIN!</GameResult>
             <ResultText>Turns: {turns - 1}</ResultText>
           </ResultBox>
-        </GameCover>
+        </EndGameCover>
       )}
     </>
   );

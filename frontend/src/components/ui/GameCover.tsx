@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import GameLogo from '../styles/GameLogo.styled';
-import GameScore, { Score } from './GameScore';
+import GameScore from './GameScore';
 import PlayGameBtn from './PlayGameBtn';
+import Game from '../../types/game';
+import Score from '../../types/score';
 
 const Container = styled.section`
   display: flex;
@@ -39,27 +41,48 @@ const BottomBox = styled(TopBox)`
   margin-top: 30px;
 `;
 
-interface CoverProps {
-  game: { name: string; description?: string; logo?: string; color: string };
+interface IStarGameCoverProps {
+  game: Game;
   score: Score;
   onClick: () => void;
-  // eslint-disable-next-line react/require-default-props
-  children?: React.ReactNode | React.ReactNode[];
-  buttonText: string;
 }
-function Cover({ game, score, onClick, children, buttonText }: CoverProps) {
+
+function StartGameCover({ game, score, onClick }: IStarGameCoverProps) {
   return (
     <Container>
-      {buttonText.toUpperCase() === 'PLAY GAME' && <GameLogo src={game.logo} alt={game.name} />}
-      <TopBox>{children !== undefined ? children : <Description>{game.description}</Description>}</TopBox>
+      <GameLogo src={game.logo} alt={game.name} />
+      <TopBox>
+        <Description>{game.description}</Description>
+      </TopBox>
       <BottomBox>
         <GameScore gameColor={game.color} gameScore={score} />
-        <PlayGameBtn title={buttonText} onClick={onClick} style={{ backgroundColor: game.color }}>
-          {buttonText}
+        <PlayGameBtn title="PLAY GAME" onClick={onClick} style={{ backgroundColor: game.color }}>
+          PLAY GAME
         </PlayGameBtn>
       </BottomBox>
     </Container>
   );
 }
 
-export default Cover;
+interface IEndGameCoverProps {
+  children: React.ReactNode | React.ReactNode[];
+  score: Score;
+  onClick: () => void;
+  gameColor: string;
+}
+
+function EndGameCover({ gameColor, score, onClick, children }: IEndGameCoverProps) {
+  return (
+    <Container>
+      <TopBox>{children}</TopBox>
+      <BottomBox>
+        <GameScore gameColor={gameColor} gameScore={score} />
+        <PlayGameBtn title="PLAY AGAIN" onClick={onClick} style={{ backgroundColor: gameColor }}>
+          PLAY AGAIN
+        </PlayGameBtn>
+      </BottomBox>
+    </Container>
+  );
+}
+
+export { StartGameCover, EndGameCover };

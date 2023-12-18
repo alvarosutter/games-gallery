@@ -1,13 +1,5 @@
-/* eslint-disable react/jsx-key */
 import styled from 'styled-components';
-
-export type Score = {
-  win?: number;
-  draw?: number;
-  lost?: number;
-  highestScore?: number;
-  highestLevel?: number;
-};
+import Score from '../../types/score';
 
 const Container = styled.section`
   display: flex;
@@ -59,10 +51,11 @@ function GameScore({ gameColor, gameScore }: ScoreProps) {
     <Container style={{ outlineColor: gameColor }}>
       {entries.map((entry) => {
         const label = entry[0].charAt(0).toUpperCase() + entry[0].slice(1);
+        const value = entry[1];
         return (
-          <Box>
+          <Box key={entry[0]}>
             <Label>{label}</Label>
-            <Text>{entry[1]}</Text>
+            <Text>{value}</Text>
           </Box>
         );
       })}

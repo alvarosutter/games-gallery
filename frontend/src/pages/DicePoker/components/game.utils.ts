@@ -1,54 +1,57 @@
 export type Dice = {
+  id: string;
   letter: string;
   value: number;
 };
 
 export const dicesSet = [
   {
+    id: '',
     letter: 'A',
     value: 14,
   },
   {
+    id: '',
     letter: '9',
     value: 9,
   },
   {
+    id: '',
     letter: '10',
     value: 10,
   },
   {
+    id: '',
     letter: 'J',
     value: 11,
   },
   {
+    id: '',
     letter: 'Q',
     value: 12,
   },
   {
+    id: '',
     letter: 'K',
     value: 13,
   },
 ];
 
-/** Returns an element of the diceSet array at random */
 function roll(): Dice {
   const randomNumber = Math.floor(Math.random() * 6);
-  return dicesSet[randomNumber];
+  return { ...dicesSet[randomNumber], id: crypto.randomUUID() };
 }
 
-/** Sorts the dices array for an better presentation of the result */
 // eslint-disable-next-line @typescript-eslint/require-await
 async function sort(dices: Dice[]) {
   return dices.sort((a, b) => a.value - b.value);
 }
 
-/** Generates an array of 5 random dice values */
 export async function getDices() {
   const dices = await sort([roll(), roll(), roll(), roll(), roll()]);
   return dices;
 }
 
-/** Returns an array with only the dice value and without the letter */
 function getDicesValues(dices: Dice[]) {
   return dices.map((dice) => dice.value);
 }
@@ -107,23 +110,21 @@ function checkDices(dices: Dice[]) {
 export function check(playerDices: Dice[], pcDices: Dice[]): { result: string; player: string; pc: string } {
   const playerResult = checkDices(playerDices);
   const pcResult = checkDices(pcDices);
-  let checkResult = { result: '', player: '', pc: '' };
 
   if (playerResult.level === pcResult.level) {
-    checkResult = { result: 'draw', player: playerResult.type, pc: pcResult.type };
     if (playerResult.sum > pcResult.sum) {
-      checkResult = { result: 'player', player: playerResult.type, pc: pcResult.type };
+      return { result: 'player', player: playerResult.type, pc: pcResult.type };
     }
     if (playerResult.sum < pcResult.sum) {
-      checkResult = { result: 'pc', player: playerResult.type, pc: pcResult.type };
+      return { result: 'pc', player: playerResult.type, pc: pcResult.type };
     }
-  }
-  if (playerResult.level > pcResult.level) {
-    checkResult = { result: 'player', player: playerResult.type, pc: pcResult.type };
-  }
-  if (playerResult.level < pcResult.level) {
-    checkResult = { result: 'pc', player: playerResult.type, pc: pcResult.type };
+    return { result: 'draw', player: playerResult.type, pc: pcResult.type };
   }
 
-  return checkResult;
+  if (playerResult.level > pcResult.level) {
+    return { result: 'player', player: playerResult.type, pc: pcResult.type };
+  }
+
+  // playerResult.level < pcResult.level
+  return { result: 'pc', player: playerResult.type, pc: pcResult.type };
 }

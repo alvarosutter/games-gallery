@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { hangman } from '../../assets/icons';
-import GameCover from '../../components/ui/GameCover';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import Game from './components/Game';
+import Game from './components/HangmanGame';
+import { StartGameCover } from '../../components/ui/GameCover';
+import Score from '../../types/score';
 
 function Hangman() {
   const name = 'Hangman';
@@ -18,9 +19,12 @@ function Hangman() {
   };
 
   if (gameRunning) {
-    return <Game game={game} score={score as object} setScore={setScore as () => void} />;
+    return (
+      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+    );
   }
-  return <GameCover onClick={() => setGameRunning(true)} game={game} buttonText="Play Game" score={score as object} />;
+
+  return <StartGameCover game={game} score={score as Score} onClick={() => setGameRunning(true)} />;
 }
 
 export default Hangman;

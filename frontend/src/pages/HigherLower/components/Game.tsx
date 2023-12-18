@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Card, clubs, diamonds, hearts, spades } from './game.utils';
 import useCounter from '../../../hooks/useCounter';
-import { Score } from '../../../components/ui/GameScore';
+
 import PlayGameBtn from '../../../components/ui/PlayGameBtn';
-import GameCover from '../../../components/ui/GameCover';
+import Score from '../../../types/score';
+import { EndGameCover } from '../../../components/ui/GameCover';
 
 const GameContainer = styled.div`
   display: flex;
@@ -120,6 +121,13 @@ function Game({ game, score, setScore }: GameProps) {
     setGameRunning(false);
   }
 
+  const handlePlayAgain = () => {
+    reset();
+    resetDeck();
+    setGameRunning(true);
+    setResult(false);
+  };
+
   useEffect(() => {
     // removes the card from the deck
     const index = deck.findIndex((e) => e.unicode === card.unicode);
@@ -150,17 +158,7 @@ function Game({ game, score, setScore }: GameProps) {
         </GameContainer>
       )}
       {!gameRunning && (
-        <GameCover
-          onClick={() => {
-            reset();
-            resetDeck();
-            setGameRunning(true);
-            setResult(false);
-          }}
-          game={game}
-          buttonText="Play Again"
-          score={score}
-        >
+        <EndGameCover onClick={handlePlayAgain} gameColor={game.color} score={score}>
           <ResultBox>
             {!result && (
               <CardBox>
@@ -172,7 +170,7 @@ function Game({ game, score, setScore }: GameProps) {
             <ResultText style={{ color: game.color }}>{result ? 'YOU WIN!' : 'GAME OVER!'}</ResultText>
             <ScoreText>Score: {counter}</ScoreText>
           </ResultBox>
-        </GameCover>
+        </EndGameCover>
       )}
     </>
   );

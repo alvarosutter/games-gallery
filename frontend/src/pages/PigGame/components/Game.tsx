@@ -1,11 +1,10 @@
-/* eslint-disable react/button-has-type */
 import { useState } from 'react';
 import styled from 'styled-components';
-import GameCover from '../../../components/ui/GameCover';
-import { Score } from '../../../components/ui/GameScore';
 import PlayGameBtn from '../../../components/ui/PlayGameBtn';
 import useCounter from '../../../hooks/useCounter';
 import { dice_1, dice_2, dice_3, dice_4, dice_5, dice_6 } from '../assets';
+import Score from '../../../types/score';
+import { EndGameCover } from '../../../components/ui/GameCover';
 
 const GameContainer = styled.div`
   display: flex;
@@ -103,14 +102,13 @@ function Game({ game, score, setScore }: GameProps) {
         </GameContainer>
       )}
       {!gameRunning && (
-        <GameCover
+        <EndGameCover
           onClick={() => {
             reset();
             setDice(0);
             setGameRunning(true);
           }}
-          game={game}
-          buttonText="Play Again"
+          gameColor={game.color}
           score={score}
         >
           <ResultBox>
@@ -118,7 +116,7 @@ function Game({ game, score, setScore }: GameProps) {
             <ResultText style={{ color: game.color }}>GAME OVER!</ResultText>
             <ScoreText>Score: {counter}</ScoreText>
           </ResultBox>
-        </GameCover>
+        </EndGameCover>
       )}
     </>
   );
