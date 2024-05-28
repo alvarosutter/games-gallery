@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import GameLogo from '../styles/GameLogo.styled';
+
 import GameScore from './GameScore';
 import PlayGameBtn from './PlayGameBtn';
-import Game from '../../types/game';
-import Score from '../../types/score';
+import type Game from '../../types/game';
+import type Score from '../../types/score';
+import GameLogo from '../styles/GameLogo.styled';
 
 const Container = styled.section`
   display: flex;
@@ -65,7 +66,7 @@ function StartGameCover({ game, score, onClick }: IStarGameCoverProps) {
 }
 
 interface IEndGameCoverProps {
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode | Array<React.ReactNode>;
   score: Score;
   onClick: () => void;
   gameColor: string;

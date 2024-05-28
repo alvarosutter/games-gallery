@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { dicePoker } from '../../assets/icons';
-import useLocalStorage from '../../hooks/useLocalStorage';
+
 import DicePokerGame from './components/DicePokerGame';
+import { dicePoker } from '../../assets/icons';
 import { StartGameCover } from '../../components/ui/GameCover';
-import Score from '../../types/score';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import type Score from '../../types/score';
 
 function DicePoker() {
   const name = 'Dice-Poker';

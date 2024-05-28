@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import useCounter from '../../../hooks/useCounter';
-import Score from '../../../types/score';
+
 import { EndGameCover } from '../../../components/ui/GameCover';
+import useCounter from '../../../hooks/useCounter';
+import type Score from '../../../types/score';
 
 function getPickStyle(pick: string) {
   if (pick === '✊') return '#FF914D';
@@ -146,6 +147,7 @@ function Game({ game, score, setScore }: GameProps) {
 
   useEffect(() => {
     setScore({ win, draw, lost });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [win, draw, lost]);
 
   return (
@@ -186,7 +188,10 @@ function Game({ game, score, setScore }: GameProps) {
           <ResultBox>
             <ResultText style={{ color: game.color }}>{result.toLocaleUpperCase()}</ResultText>
             <PicksBox>
-              <PickResult title={picks.player} style={{ borderColor: `${getPickStyle(picks.player)}` }}>
+              <PickResult
+                title={picks.player}
+                style={{ borderColor: `${getPickStyle(picks.player)}` }}
+              >
                 {picks.player}
               </PickResult>
               <ResultText>VS</ResultText>

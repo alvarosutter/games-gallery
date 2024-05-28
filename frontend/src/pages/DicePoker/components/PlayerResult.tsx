@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
-import { Dice } from './game.utils';
+
+import type { Dice } from './game.utils';
 
 const DicesBox = styled.div`
   display: flex;
@@ -46,16 +47,14 @@ const ResultText = styled.p`
 interface IPlayerResult {
   name: string;
   result: string;
-  dices: Dice[];
+  dices: Array<Dice>;
   gameColor: string;
 }
 
 function PlayerResult({ name, result, dices, gameColor }: IPlayerResult) {
   return (
     <>
-      <ResultText>
-        {name}: {result}
-      </ResultText>
+      <ResultText>{`${name}: ${result}`}</ResultText>
       <DicesBox>
         {dices.map((dice) => (
           <DiceWrapper key={dice.id} style={{ borderColor: gameColor }}>

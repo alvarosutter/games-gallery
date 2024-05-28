@@ -1,6 +1,9 @@
 import { useCallback, useState, useEffect } from 'react';
 
-function getSavedValue(key: string, initialValue: string | number | boolean | object | (() => void)) {
+function getSavedValue(
+  key: string,
+  initialValue: string | number | boolean | object | (() => void),
+) {
   const jsonValue = localStorage.getItem(key);
   if (jsonValue != null) {
     return JSON.parse(jsonValue) as unknown;
@@ -11,7 +14,10 @@ function getSavedValue(key: string, initialValue: string | number | boolean | ob
   return initialValue;
 }
 
-function useLocalStorage(key: string, initialValue: string | number | boolean | object | (() => void)) {
+function useLocalStorage(
+  key: string,
+  initialValue: string | number | boolean | object | (() => void),
+) {
   const [value, setValue] = useState(() => getSavedValue(key, initialValue));
 
   useEffect(() => {
@@ -20,6 +26,7 @@ function useLocalStorage(key: string, initialValue: string | number | boolean | 
 
   const remove = useCallback(() => {
     localStorage.removeItem(key);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [value, setValue, remove];

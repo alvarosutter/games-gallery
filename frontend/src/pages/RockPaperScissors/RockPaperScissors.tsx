@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { rockPaperScissors } from '../../assets/icons';
-import useLocalStorage from '../../hooks/useLocalStorage';
+
 import Game from './components/Game';
-import Score from '../../types/score';
+import { rockPaperScissors } from '../../assets/icons';
 import { StartGameCover } from '../../components/ui/GameCover';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import type Score from '../../types/score';
 
 function RockPaperScissors() {
   const name = 'Rock-Paper-Scissors';
@@ -20,7 +21,11 @@ function RockPaperScissors() {
 
   if (gameRunning) {
     return (
-      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+      <Game
+        game={game}
+        score={score as Score}
+        setScore={setScore as React.Dispatch<React.SetStateAction<Score>>}
+      />
     );
   }
 

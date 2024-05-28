@@ -1,5 +1,6 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import styled from 'styled-components';
+
 import Footer, { footerHeight } from './Footer';
 import Header, { headerHeight } from './Header';
 import Logo from './Logo';
@@ -13,7 +14,7 @@ const Main = styled.main`
   padding: 10px 10px;
 `;
 interface LayoutProps {
-  children: React.ReactNode | React.ReactNode[];
+  children: ReactNode | Array<ReactNode>;
 }
 
 function Layout({ children }: LayoutProps) {

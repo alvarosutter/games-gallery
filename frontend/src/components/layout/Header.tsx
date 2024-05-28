@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import styled from 'styled-components';
 
 export const headerHeight = '50px';
@@ -22,7 +23,7 @@ const HeaderStyle = styled.header`
 `;
 
 interface HeaderProps {
-  children: React.ReactNode | React.ReactNode[];
+  children: ReactNode | Array<ReactNode>;
 }
 
 function Header({ children }: HeaderProps) {

@@ -21,6 +21,7 @@ const Button = styled.button`
 `;
 
 function PlayGameBtn(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <Button {...props} />;
 }
 

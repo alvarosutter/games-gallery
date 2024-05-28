@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+import type { Dice } from './game.utils';
+import { check, getDices } from './game.utils';
+import PlayerResult from './PlayerResult';
+import { EndGameCover } from '../../../components/ui/GameCover';
 import PlayGameBtn from '../../../components/ui/PlayGameBtn';
 import useCounter from '../../../hooks/useCounter';
-import { check, Dice, getDices } from './game.utils';
-import Score from '../../../types/score';
-import { EndGameCover } from '../../../components/ui/GameCover';
-import PlayerResult from './PlayerResult';
+import type Score from '../../../types/score';
 
 const ResultBox = styled.div`
   display: flex;
@@ -35,10 +37,10 @@ function DicePokerGame({ game, score, setScore }: GameProps) {
   const { counter: win, increment: incrementWin } = useCounter(score.win);
   const { counter: draw, increment: incrementDraw } = useCounter(score.draw);
   const { counter: lost, increment: incrementLost } = useCounter(score.lost);
-  const [playerDices, setPlayerDices] = useState<Dice[]>([]);
-  const [pcDices, setPcDices] = useState<Dice[]>([]);
+  const [playerDices, setPlayerDices] = useState<Array<Dice>>([]);
+  const [pcDices, setPcDices] = useState<Array<Dice>>([]);
 
-  function checkResult(playerRoll: Dice[], pcRoll: Dice[]) {
+  function checkResult(playerRoll: Array<Dice>, pcRoll: Array<Dice>) {
     const { result: res, player, pc } = check(playerRoll, pcRoll);
     if (res === 'draw') {
       incrementDraw();
@@ -73,11 +75,16 @@ function DicePokerGame({ game, score, setScore }: GameProps) {
 
   useEffect(() => {
     setScore({ win, draw, lost });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [win, draw, lost]);
 
   if (gameRunning) {
     return (
-      <PlayGameBtn title="Roll Dices" onClick={playGame} style={{ margin: 'auto', backgroundColor: game.color }}>
+      <PlayGameBtn
+        title="Roll Dices"
+        onClick={playGame}
+        style={{ margin: 'auto', backgroundColor: game.color }}
+      >
         Roll Dice
       </PlayGameBtn>
     );
@@ -87,7 +94,12 @@ function DicePokerGame({ game, score, setScore }: GameProps) {
     <EndGameCover onClick={handleStartGame} gameColor={game.color} score={score}>
       <ResultBox>
         <GameResult style={{ color: game.color }}>{result.res.toLocaleUpperCase()}</GameResult>
-        <PlayerResult name="You" result={result.player} dices={playerDices} gameColor={game.color} />
+        <PlayerResult
+          name="You"
+          result={result.player}
+          dices={playerDices}
+          gameColor={game.color}
+        />
         <PlayerResult name="PC" result={result.pc} dices={pcDices} gameColor={game.color} />
       </ResultBox>
     </EndGameCover>

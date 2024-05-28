@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+
 import FontStyles from './components/layout/FontStyles';
 import GlobalStyle from './components/layout/GlobalStyle';
 import Layout from './components/layout/Layout';

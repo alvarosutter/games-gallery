@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import useCounter from '../../../hooks/useCounter';
-import { Card, generateSet } from './game.utils';
-import Score from '../../../types/score';
+import type { Card } from './game.utils';
+import { generateSet } from './game.utils';
 import { EndGameCover } from '../../../components/ui/GameCover';
+import useCounter from '../../../hooks/useCounter';
+import type Score from '../../../types/score';
 
 const GameContainer = styled.div`
   display: grid;
@@ -86,10 +87,10 @@ interface GameProps {
 function Game({ game, score, setScore }: GameProps) {
   const [gameRunning, setGameRunning] = useState(true);
   const { counter: turns, increment: incrementTurns, reset: resetTurns } = useCounter(0);
-  const [cards, setCards] = useState<Card[]>([]);
+  const [cards, setCards] = useState<Array<Card>>([]);
   const { counter: picks, increment: incrementPicks, reset: resetPicks } = useCounter(0);
   const { counter: pairs, increment: incrementPairs, reset: resetPairs } = useCounter(0);
-  const [targets, setTargets] = useState<EventTarget[] & HTMLButtonElement[]>([]);
+  const [targets, setTargets] = useState<Array<EventTarget> & Array<HTMLButtonElement>>([]);
 
   async function startGame() {
     const randomSet = await generateSet();
@@ -174,7 +175,7 @@ function Game({ game, score, setScore }: GameProps) {
         >
           <ResultBox>
             <GameResult style={{ color: game.color }}>YOU WIN!</GameResult>
-            <ResultText>Turns: {turns - 1}</ResultText>
+            <ResultText>{`Turns: ${turns - 1}`}</ResultText>
           </ResultBox>
         </EndGameCover>
       )}

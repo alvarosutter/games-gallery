@@ -1,9 +1,11 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import type { RefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import useCounter from '../../../hooks/useCounter';
-import { redSound, greenSound, yellowSound, blueSound, wrongSound } from '../assets';
-import Score from '../../../types/score';
+
 import { EndGameCover } from '../../../components/ui/GameCover';
+import useCounter from '../../../hooks/useCounter';
+import type Score from '../../../types/score';
+import { redSound, greenSound, yellowSound, blueSound, wrongSound } from '../assets';
 
 const GameContainer = styled.div`
   display: flex;
@@ -70,12 +72,12 @@ interface GameProps {
   setScore: (score: Score) => void;
 }
 
-function Game({ game, score, setScore }: GameProps) {
+export default function Game({ game, score, setScore }: GameProps) {
   const [gameRunning, setGameRunning] = useState(true);
   const [result, setResult] = useState(false);
   const { counter, increment, reset } = useCounter();
-  const colors: Color[] = ['red', 'green', 'yellow', 'blue'];
-  const [simonSequence, setSimonSequence] = useState<Color[]>([]);
+  const colors: Array<Color> = ['red', 'green', 'yellow', 'blue'];
+  const [simonSequence, setSimonSequence] = useState<Array<Color>>([]);
   const [playingIndex, setPlayingIndex] = useState(0);
 
   const redRef = useRef<HTMLButtonElement>(null);
@@ -112,7 +114,7 @@ function Game({ game, score, setScore }: GameProps) {
 
   function checkInput(clickColor: Color, sound: string) {
     const audio = new Audio(sound);
-    if (gameRunning)
+    if (gameRunning) {
       setTimeout(() => {
         if (simonSequence[playingIndex] === clickColor) {
           // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -139,23 +141,26 @@ function Game({ game, score, setScore }: GameProps) {
           setGameRunning(false);
         }
       }, 250);
+    }
   }
 
   /** Picks the first color when the game starts */
   useEffect(() => {
     addNextColor();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameRunning]);
 
   /** Highlights the button(s) every time the sequence change */
   useEffect(() => {
     if (simonSequence.length > 0) highlightButton();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [simonSequence]);
 
   return (
     <>
       {gameRunning && (
         <GameContainer>
-          <Level>LEVEL {counter}</Level>
+          <Level>{`LEVEL ${counter}`}</Level>
           <Row>
             <GameButton
               ref={redRef}
@@ -217,13 +222,13 @@ function Game({ game, score, setScore }: GameProps) {
           score={score}
         >
           <ResultBox>
-            <GameResult style={{ color: game.color }}>{result ? 'YOU WIN!' : 'YOU LOSE!'}</GameResult>
-            <Level>LEVEL {counter}</Level>
+            <GameResult style={{ color: game.color }}>
+              {result ? 'YOU WIN!' : 'YOU LOSE!'}
+            </GameResult>
+            <Level>{`LEVEL ${counter}`}</Level>
           </ResultBox>
         </EndGameCover>
       )}
     </>
   );
 }
-
-export default Game;

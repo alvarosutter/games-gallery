@@ -30,26 +30,32 @@ const Letter = styled.div`
 
 interface IWordProps {
   word: string;
-  guesses: string[];
+  guesses: Array<string>;
   gameRunning: boolean;
 }
 
 function Word({ word, guesses, gameRunning }: IWordProps) {
   return (
     <WordStyle>
-      {word.split('').map((letter, i) =>
-        letter !== ' ' ? (
+      {word.split('').map((letter, i) => {
+        const notEmpty = (
           // eslint-disable-next-line react/no-array-index-key
           <Letter key={letter + i}>
-            <p style={guesses.includes(letter) || !gameRunning ? { color: '#ffffff' } : { visibility: 'hidden' }}>
+            <p
+              style={
+                guesses.includes(letter) || !gameRunning
+                  ? { color: '#ffffff' }
+                  : { visibility: 'hidden' }
+              }
+            >
               {letter}
             </p>
           </Letter>
-        ) : (
-          // eslint-disable-next-line react/no-array-index-key
-          <Letter style={{ visibility: 'hidden' }} key={letter + i} />
-        ),
-      )}
+        );
+        // eslint-disable-next-line react/no-array-index-key
+        const empty = <Letter style={{ visibility: 'hidden' }} key={letter + i} />;
+        return letter !== ' ' ? notEmpty : empty;
+      })}
     </WordStyle>
   );
 }

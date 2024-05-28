@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Score from '../../types/score';
+
+import type Score from '../../types/score';
 
 const Container = styled.section`
   display: flex;

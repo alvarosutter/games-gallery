@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+
+import { EndGameCover } from '../../../components/ui/GameCover';
 import PlayGameBtn from '../../../components/ui/PlayGameBtn';
 import useCounter from '../../../hooks/useCounter';
+import type Score from '../../../types/score';
 import { dice_1, dice_2, dice_3, dice_4, dice_5, dice_6 } from '../assets';
-import Score from '../../../types/score';
-import { EndGameCover } from '../../../components/ui/GameCover';
 
 const GameContainer = styled.div`
   display: flex;
@@ -88,8 +89,12 @@ function Game({ game, score, setScore }: GameProps) {
     <>
       {gameRunning && (
         <GameContainer>
-          <Dice style={!dice ? { opacity: '0' } : {}} src={getImgSource(dice)} alt={dice.toString()} />
-          <ScoreText>Score: {counter}</ScoreText>
+          <Dice
+            style={!dice ? { opacity: '0' } : {}}
+            src={getImgSource(dice)}
+            alt={dice.toString()}
+          />
+          <ScoreText>{`Score: ${counter}`}</ScoreText>
           <PlayGameBtn
             title="Roll Dice"
             onClick={() => {
@@ -114,7 +119,7 @@ function Game({ game, score, setScore }: GameProps) {
           <ResultBox>
             <Dice src={getImgSource(dice)} alt={dice.toString()} />
             <ResultText style={{ color: game.color }}>GAME OVER!</ResultText>
-            <ScoreText>Score: {counter}</ScoreText>
+            <ScoreText>{`Score: ${counter}`}</ScoreText>
           </ResultBox>
         </EndGameCover>
       )}

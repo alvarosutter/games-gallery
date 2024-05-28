@@ -25,7 +25,8 @@ const LogoHighlight = styled.span`
 function Logo() {
   return (
     <LogoStyle to="/">
-      <LogoHighlight>GAMES</LogoHighlight>GALLERY
+      <LogoHighlight>GAMES</LogoHighlight>
+      GALLERY
     </LogoStyle>
   );
 }

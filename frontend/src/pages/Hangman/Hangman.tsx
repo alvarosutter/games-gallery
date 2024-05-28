@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { hangman } from '../../assets/icons';
-import useLocalStorage from '../../hooks/useLocalStorage';
+
 import HangmanGame from './components/HangmanGame';
+import { hangman } from '../../assets/icons';
 import { StartGameCover } from '../../components/ui/GameCover';
-import Score from '../../types/score';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import type Score from '../../types/score';
 
 function Hangman() {
   const name = 'Hangman';
@@ -13,6 +14,7 @@ function Hangman() {
   const game = {
     name,
     description:
+      // eslint-disable-next-line max-len
       'Play the classic guest game Hangman. Try to guest the country, but be careful, six wrong guesses and is GAME OVER!',
     logo: hangman,
     color: '#c0c0c0',

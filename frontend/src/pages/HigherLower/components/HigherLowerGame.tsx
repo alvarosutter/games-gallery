@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Card, clubs, diamonds, hearts, spades } from './game.utils';
-import useCounter from '../../../hooks/useCounter';
 
-import PlayGameBtn from '../../../components/ui/PlayGameBtn';
-import Score from '../../../types/score';
+import type { Card } from './game.utils';
+import { clubs, diamonds, hearts, spades } from './game.utils';
 import { EndGameCover } from '../../../components/ui/GameCover';
+import PlayGameBtn from '../../../components/ui/PlayGameBtn';
+import useCounter from '../../../hooks/useCounter';
+import type Score from '../../../types/score';
 
 const GameContainer = styled.div`
   display: flex;
@@ -87,7 +88,7 @@ function HigherLowerGame({ game, score, setScore }: GameProps) {
   const { counter, increment, reset } = useCounter();
   const [result, setResult] = useState(false);
   const cards = [...spades, ...hearts, ...diamonds, ...clubs];
-  const [deck, setCards] = useState<Card[]>([...cards]);
+  const [deck, setCards] = useState<Array<Card>>([...cards]);
   const [card, setCard] = useState<Card>(deck[Math.floor(Math.random() * deck.length)]);
 
   function getRandomCard(): Card {
@@ -103,6 +104,7 @@ function HigherLowerGame({ game, score, setScore }: GameProps) {
     const nextCard: Card = getRandomCard();
 
     if (
+      // eslint-disable-next-line operator-linebreak
       (playerPick === 'higher' && card.value <= nextCard.value) ||
       (playerPick === 'lower' && card.value >= nextCard.value)
     ) {
@@ -136,6 +138,7 @@ function HigherLowerGame({ game, score, setScore }: GameProps) {
     if (counter > score.highestScore!) {
       setScore({ highestScore: counter });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [card]);
 
   return (
@@ -143,15 +146,27 @@ function HigherLowerGame({ game, score, setScore }: GameProps) {
       {gameRunning && (
         <GameContainer>
           <CardBox>
-            <CardStyle style={card?.type === 'hearts' || card?.type === 'diamonds' ? { color: '#ff0000ee' } : {}}>
+            <CardStyle
+              style={
+                card?.type === 'hearts' || card?.type === 'diamonds' ? { color: '#ff0000ee' } : {}
+              }
+            >
               {card?.unicode}
             </CardStyle>
           </CardBox>
           <ButtonsBox>
-            <PlayGameBtn title="Go Higher" onClick={() => check('higher')} style={{ backgroundColor: '#7ed957bb' }}>
+            <PlayGameBtn
+              title="Go Higher"
+              onClick={() => check('higher')}
+              style={{ backgroundColor: '#7ed957bb' }}
+            >
               Higher
             </PlayGameBtn>
-            <PlayGameBtn title="Go Lower" onClick={() => check('lower')} style={{ backgroundColor: '#ec4759bb' }}>
+            <PlayGameBtn
+              title="Go Lower"
+              onClick={() => check('lower')}
+              style={{ backgroundColor: '#ec4759bb' }}
+            >
               Lower
             </PlayGameBtn>
           </ButtonsBox>
@@ -162,13 +177,21 @@ function HigherLowerGame({ game, score, setScore }: GameProps) {
           <ResultBox>
             {!result && (
               <CardBox>
-                <CardStyle style={card?.type === 'hearts' || card?.type === 'diamonds' ? { color: '#ff0000ee' } : {}}>
+                <CardStyle
+                  style={
+                    card?.type === 'hearts' || card?.type === 'diamonds'
+                      ? { color: '#ff0000ee' }
+                      : {}
+                  }
+                >
                   {card?.unicode}
                 </CardStyle>
               </CardBox>
             )}
-            <ResultText style={{ color: game.color }}>{result ? 'YOU WIN!' : 'GAME OVER!'}</ResultText>
-            <ScoreText>Score: {counter}</ScoreText>
+            <ResultText style={{ color: game.color }}>
+              {result ? 'YOU WIN!' : 'GAME OVER!'}
+            </ResultText>
+            <ScoreText>{`Score: ${counter}`}</ScoreText>
           </ResultBox>
         </EndGameCover>
       )}

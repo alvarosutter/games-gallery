@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+
+import generateWord from './game.util';
+import HangmanBody from './HangmanBody';
+import Word from './Word';
 import { EndGameCover } from '../../../components/ui/GameCover';
 import PlayGameBtn from '../../../components/ui/PlayGameBtn';
 import useCounter from '../../../hooks/useCounter';
-import generateWord from './game.util';
-import HangmanBody from './HangmanBody';
-import Score from '../../../types/score';
-import Word from './Word';
+import type Score from '../../../types/score';
 
 const GameContainer = styled.div`
   display: flex;
@@ -123,12 +124,17 @@ interface GameProps {
 function HangmanGame({ game, score, setScore }: GameProps) {
   const [gameRunning, setGameRunning] = useState(true);
   const [result, setResult] = useState('');
-  const { counter: lives, decrement: decrementLives, reset: resetLives, add: addLives } = useCounter(6);
+  const {
+    counter: lives,
+    decrement: decrementLives,
+    reset: resetLives,
+    add: addLives,
+  } = useCounter(6);
   const { counter: turns, increment: incrementTurns, reset: resetTurns } = useCounter(0);
   const { counter: win, increment: incrementWin } = useCounter(score.win);
   const { counter: lost, increment: incrementLost } = useCounter(score.lost);
   const [word, setWord] = useState(generateWord());
-  const [guesses, setGuesses] = useState<string[]>([]);
+  const [guesses, setGuesses] = useState<Array<string>>([]);
   const guessRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -172,6 +178,7 @@ function HangmanGame({ game, score, setScore }: GameProps) {
 
   useEffect(() => {
     setScore({ win, lost });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [win, lost]);
 
   return (
@@ -187,19 +194,23 @@ function HangmanGame({ game, score, setScore }: GameProps) {
           <FormWrapper>
             <InputForm onSubmit={submitHandler}>
               <Label>
-                Guess: <Input ref={guessRef} type="text" maxLength={1} autoFocus required />
+                {'Guess: '}
+                <Input ref={guessRef} type="text" maxLength={1} autoFocus required />
               </Label>
-              <PlayGameBtn style={{ margin: '20px', backgroundColor: `${game.color}` }} type="submit">
+              <PlayGameBtn
+                style={{ margin: '20px', backgroundColor: `${game.color}` }}
+                type="submit"
+              >
                 Enter
               </PlayGameBtn>
             </InputForm>
           </FormWrapper>
           <GameInfo>
-            <InfoText style={{ display: 'none' }}>Turns: {turns}</InfoText>
+            <InfoText style={{ display: 'none' }}>{`Turns: ${turns}`}</InfoText>
             <InfoText>
               {guesses.map((g, i) => (
                 // eslint-disable-next-line react/no-array-index-key
-                <span key={g + i}>{g} </span>
+                <span key={g + i}>{`${g} `}</span>
               ))}
             </InfoText>
           </GameInfo>

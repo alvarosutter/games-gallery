@@ -1,5 +1,5 @@
 export type Card = '🎃' | '🤡' | '👽' | '👻' | '👾' | '🤖' | '⚽' | '🎱' | '💎' | '🚀';
-export const cardsSet: Card[] = [
+export const cardsSet: Array<Card> = [
   '🎃',
   '🎃',
   '🤡',
@@ -23,9 +23,9 @@ export const cardsSet: Card[] = [
 ];
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export async function generateSet(): Promise<Card[]> {
-  const randomSet: Card[] = [];
-  const cards: Card[] = [...cardsSet];
+export async function generateSet(): Promise<Array<Card>> {
+  const randomSet: Array<Card> = [];
+  const cards: Array<Card> = [...cardsSet];
   while (cards.length !== 0) {
     const randomNumber = Math.floor(Math.random() * cards.length);
     randomSet.push(cards.splice(randomNumber, 1)[0]);

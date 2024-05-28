@@ -43,7 +43,7 @@ function roll(): Dice {
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
-async function sort(dices: Dice[]) {
+async function sort(dices: Array<Dice>) {
   return dices.sort((a, b) => a.value - b.value);
 }
 
@@ -52,19 +52,21 @@ export async function getDices() {
   return dices;
 }
 
-function getDicesValues(dices: Dice[]) {
+function getDicesValues(dices: Array<Dice>) {
   return dices.map((dice) => dice.value);
 }
 
 /** Returns the sum of all the values in an array */
-function getSum(arr: number[]) {
+function getSum(arr: Array<number>) {
   return arr.reduce((acc, num) => acc + num, 0);
 }
 
-function checkDices(dices: Dice[]) {
+function checkDices(dices: Array<Dice>) {
   const dicesValues = getDicesValues(dices);
   // Array with all the duplicates in order to find pairs, triples, and so on
-  const duplicates = dicesValues.filter((dice) => dicesValues.indexOf(dice) !== dicesValues.lastIndexOf(dice));
+  const duplicates = dicesValues.filter(
+    (dice) => dicesValues.indexOf(dice) !== dicesValues.lastIndexOf(dice),
+  );
   const sum = getSum(duplicates);
 
   // Check for Five of a Kind - Level 7
@@ -104,10 +106,17 @@ function checkDices(dices: Dice[]) {
     return { type: 'Two of a Kind', level: 1, sum };
   }
 
-  return { type: `Highest Card ${dices.slice(-1)[0].letter}`, level: 0, sum: dices.slice(-1)[0].value };
+  return {
+    type: `Highest Card ${dices.slice(-1)[0].letter}`,
+    level: 0,
+    sum: dices.slice(-1)[0].value,
+  };
 }
 
-export function check(playerDices: Dice[], pcDices: Dice[]): { result: string; player: string; pc: string } {
+export function check(
+  playerDices: Array<Dice>,
+  pcDices: Array<Dice>,
+): { result: string; player: string; pc: string } {
   const playerResult = checkDices(playerDices);
   const pcResult = checkDices(pcDices);
 

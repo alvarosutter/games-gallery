@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { pigGame } from '../../assets/icons';
 
-import useLocalStorage from '../../hooks/useLocalStorage';
 import Game from './components/Game';
-import Score from '../../types/score';
+import { pigGame } from '../../assets/icons';
 import { StartGameCover } from '../../components/ui/GameCover';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import type Score from '../../types/score';
 
 function PigGame() {
   const name = 'Pig-Game';
@@ -14,6 +14,7 @@ function PigGame() {
   const game = {
     name,
     description:
+      // eslint-disable-next-line max-len
       'Play the classic dice game: Pig. Roll the dice and add the result to your score. If you roll one it is game over!',
     logo: pigGame,
     color: '#ff914d',
@@ -21,7 +22,11 @@ function PigGame() {
 
   if (gameRunning) {
     return (
-      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+      <Game
+        game={game}
+        score={score as Score}
+        setScore={setScore as React.Dispatch<React.SetStateAction<Score>>}
+      />
     );
   }
 

@@ -1,9 +1,10 @@
 import { useState } from 'react';
+
+import Game from './components/Game';
 import { memory } from '../../assets/icons';
 import { StartGameCover } from '../../components/ui/GameCover';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import Game from './components/Game';
-import Score from '../../types/score';
+import type Score from '../../types/score';
 
 function Memory() {
   const name = 'Memory';
@@ -13,6 +14,7 @@ function Memory() {
   const game = {
     name,
     description:
+      // eslint-disable-next-line max-len
       'Play a round of memory. Pick one of the 12 cards and try to find the match. See how quick can you find all the pairs!',
     logo: memory,
     color: '#FFDE59',
@@ -20,7 +22,11 @@ function Memory() {
 
   if (gameRunning) {
     return (
-      <Game game={game} score={score as Score} setScore={setScore as React.Dispatch<React.SetStateAction<Score>>} />
+      <Game
+        game={game}
+        score={score as Score}
+        setScore={setScore as React.Dispatch<React.SetStateAction<Score>>}
+      />
     );
   }
 
