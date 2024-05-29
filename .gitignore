@@ -1,10 +1,11 @@
 # project
 node_modules
 dist
+dist-ssr
+*.local
 .npm
 .eslintcache
 *.tsbuildinfo
-postgres-data
 
 # env
 .env
@@ -23,6 +24,84 @@ yarn-error.log*
 lerna-debug.log*
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# Extra
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+mynotes.md
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+coverage
+
+# next.js
+.next/
+out/
+
+# production
+build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env
+.env
+.env.test
+.env*.local
+*.key
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# project
+node_modules
+dist
+dist-ssr
+*.local
+.npm
+.eslintcache
+*.tsbuildinfo
+
+# tests
+coverage
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local Netlify folder
+.netlify

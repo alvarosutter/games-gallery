@@ -3,8 +3,9 @@ node_modules
 npm-debug.log
 .npm
 
+# Next.js Build Output
+.next
 build
-dist
 
 # Next.js Generated Files
 public/static/documents

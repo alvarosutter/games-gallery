@@ -4,9 +4,9 @@
   "description": "A collection of simple mini-games.",
   "main": "index.js",
   "scripts": {
-    "start": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\" --parser-options={tsconfigRootDir:null}",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier \"**/*.{js,jsx,ts,tsx,json,yml,css}\" --check",
@@ -35,31 +35,27 @@
     ]
   },
   "dependencies": {
+    "next": "^14.2.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
-    "styled-components": "^6.1.11"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/node": "^20.12.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@types/react-router": "^5.1.20",
-    "@types/styled-components": "^5.1.34",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
-    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-next": "^14.2.3",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.34.2",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
+    "postcss": "^8.4.38",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11"
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
   }
 }

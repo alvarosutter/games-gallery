@@ -1,21 +1,14 @@
 {
-  "extends": [
-    "prettier",
-    "airbnb",
-    "airbnb-typescript",
-    "airbnb/hooks",
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended-type-checked"
-  ],
-  "plugins": ["react-refresh", "react", "@typescript-eslint", "prettier"],
+  "extends": ["prettier", "next/core-web-vitals", "airbnb", "airbnb-typescript"],
+  "plugins": ["prettier"],
   "parserOptions": {
-    "project": ["**/tsconfig.json", "**/tsconfig.node.json"]
+    "project": "**/tsconfig.json"
   },
   "rules": {
     "prettier/prettier": "error",
     "no-console": "warn",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "@typescript-eslint/array-type": ["error", { "default": "generic" }],
     "import/order": [
       "error",
@@ -29,15 +22,8 @@
       }
     ],
     "@typescript-eslint/consistent-type-imports": "error",
-    "object-curly-newline": "off",
-    "@typescript-eslint/no-misused-promises": [
-      "error",
-      {
-        "checksVoidReturn": false
-      }
-    ],
-    "implicit-arrow-linebreak": "off",
-    "max-len": ["error", { "code": 120 }],
+    "object-curly-newline": ["off"],
+    "react/jsx-key": ["error"],
     "react/require-default-props": "off"
   }
 }

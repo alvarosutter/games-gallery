@@ -1,8 +1,17 @@
 node_modules
-dist
+
+# Next.js
+.next
 .turbo
 .swc
 build
+
+# We don't want to lint/prettify the Coverage Results
 coverage
 junit.xml
+
+# This file naturally might break conventional rules
 global.d.ts
+
+next.config.js
+postcss.config.js
