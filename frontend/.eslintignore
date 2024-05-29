@@ -13,5 +13,5 @@ junit.xml
 # This file naturally might break conventional rules
 global.d.ts
 
-next.config.js
+next.config.mjs
 postcss.config.js
