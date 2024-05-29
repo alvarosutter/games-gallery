@@ -1,6 +1,6 @@
 import GamesData from './gamesData.json';
 import GameLogo from '../components/ui/Home/GameLogo';
-import type { Game } from '../types/Game';
+import type { Game } from '../types/game';
 
 export default function Main() {
   const games = GamesData.games as Array<Game>;
