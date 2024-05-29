@@ -22,7 +22,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode; params: { locale: string } }>) {
   return (
     <html lang={locale} className={`${inter.variable}`} suppressHydrationWarning>
-      <body className="font-inter antialiased">
+      <body className="flex min-h-svh flex-col items-center justify-start bg-[#121212] font-inter text-[#F5F5F5] antialiased">
         <Header />
         {children}
         <Footer />

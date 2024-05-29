@@ -1,0 +1,79 @@
+{
+  "games": [
+    {
+      "name": "Rock-Paper-Scissors",
+      "logo": "/logos/rockPaperScissors.png",
+      "description": "Play the classic game of Rock-Paper-Scissors against our computer. Pick one of the options and test your luck!",
+      "score": {
+        "win": 0,
+        "draw": 0,
+        "lost": 0
+      },
+      "color": "#38b6ff",
+      "href": "/games/rockpaperscissors"
+    },
+    {
+      "name": "Higher-Lower",
+      "logo": "/logos/higherLower.png",
+      "description": "Play the Higher or Lower guest game against our computer. Pick if the next card will be higher or lower than the current one and test your luck!",
+      "score": {
+        "highestScore": 0
+      },
+      "color": "#7ed957",
+      "href": "/games/higherlower"
+    },
+    {
+      "name": "Pig-Game",
+      "logo": "/logos/pigGame.png",
+      "description": "Play the classic dice game: Pig. Roll the dice and add the result to your score. If you roll one it is game over!",
+      "score": {
+        "highestScore": 0
+      },
+      "color": "#ff914d",
+      "href": "/games/piggame"
+    },
+    {
+      "name": "Dice-Poker",
+      "logo": "/logos/dicePoker.png",
+      "description": "Play a simple version of poker against our computer. There are not bets, just roll 5 dices and test your luck!",
+      "score": {
+        "win": 0,
+        "draw": 0,
+        "lost": 0
+      },
+      "color": "#c9b07d",
+      "href": "/games/dicepoker"
+    },
+    {
+      "name": "Hangman",
+      "logo": "/logos/hangman.png",
+      "description": "Play the classic guest game Hangman. Try to guest the country, but be careful, six wrong guesses and is GAME OVER!",
+      "score": {
+        "win": 0,
+        "lost": 0
+      },
+      "color": "#c0c0c0",
+      "href": "/games/hangman"
+    },
+    {
+      "name": "Simon-Game",
+      "logo": "/logos/simongame.png",
+      "description": "Play the famous 80's game: Simon Game. Watch the sequence and then click the buttons in the right order. See if you can reach level. 15 and win the game!",
+      "score": {
+        "highestLevel": 0
+      },
+      "color": "#FF5757",
+      "href": "/games/simongame"
+    },
+    {
+      "name": "Memory",
+      "logo": "/logos/memory.png",
+      "description": "Play a round of memory. Pick one of the 12 cards and try to find the match. See how quick can you find all the pairs!",
+      "score": {
+        "highestScore": -1
+      },
+      "color": "#FFDE59",
+      "href": "/games/memory"
+    }
+  ]
+}
