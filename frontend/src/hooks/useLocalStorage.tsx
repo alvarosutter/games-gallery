@@ -16,7 +16,7 @@ function getSavedValue(key: string, initialValue: Score) {
   return initialValue;
 }
 
-function useLocalStorage(key: string, initialValue: Score) {
+export default function useLocalStorage(key: string, initialValue: Score) {
   const [value, setValue] = useState(() => getSavedValue(key, initialValue));
 
   useEffect(() => {
@@ -34,5 +34,3 @@ function useLocalStorage(key: string, initialValue: Score) {
     remove: () => void;
   };
 }
-
-export default useLocalStorage;

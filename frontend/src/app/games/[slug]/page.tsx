@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import getGame from './page.utils';
+import RockPaperScissors from '../../../components/games/RockPaperScissors';
 import Cover from '../../../components/ui/Game/Cover';
 import useLocalStorage from '../../../hooks/useLocalStorage';
 import type { Game } from '../../../types/game';
@@ -14,10 +14,31 @@ export default function Main() {
   const games = GamesData.games as Array<Game>;
   const game = games.filter((g) => g.href === pathname)[0];
   const [gameRunning, setGameRunning] = useState(false);
-  const { value: savedScore } = useLocalStorage(`${game.name}-score`, game.score);
+  const { value: savedScore, setValue: setScore } = useLocalStorage(
+    `${game.name}-score`,
+    game.score
+  );
 
   if (gameRunning) {
-    return getGame(game.name);
+    const name = pathname.replace('/games/', '');
+    switch (name) {
+      case 'rockpaperscissors':
+        return <RockPaperScissors game={game} score={savedScore} setScore={setScore} />;
+      case 'higherlower':
+        return <p>{name}</p>;
+      case 'piggame':
+        return <p>{name}</p>;
+      case 'dicepoker':
+        return <p>{name}</p>;
+      case 'hangman':
+        return <p>{name}</p>;
+      case 'simongame':
+        return <p>{name}</p>;
+      case 'memory':
+        return <p>{name}</p>;
+      default:
+        return <p>{`GAME: ${name} NOT FOUND`}</p>;
+    }
   }
 
   return (
