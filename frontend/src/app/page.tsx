@@ -1,11 +1,11 @@
 import GamesData from './gamesData.json';
-import GameLogo from '../components/ui/Home/GameLogo';
+import GameLogo from '../components/ui/Game/GameLogo';
 import type { Game } from '../types/game';
 
 export default function Main() {
   const games = GamesData.games as Array<Game>;
   return (
-    <main className="mt-6 flex w-full max-w-[80%] flex-row flex-wrap content-start items-start justify-evenly gap-x-8 gap-y-12 p-4">
+    <section className="flex flex-row flex-wrap content-start items-start justify-evenly gap-x-8 gap-y-12 p-4">
       {games.map((game) => (
         <GameLogo
           key={game.name}
@@ -15,6 +15,6 @@ export default function Main() {
           alt={game.name}
         />
       ))}
-    </main>
+    </section>
   );
 }

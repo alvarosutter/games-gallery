@@ -24,6 +24,7 @@
     "@typescript-eslint/consistent-type-imports": "error",
     "object-curly-newline": ["off"],
     "react/jsx-key": ["error"],
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "@typescript-eslint/comma-dangle": ["off"]
   }
 }
