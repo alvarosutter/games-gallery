@@ -4,6 +4,7 @@ import OptionBtn from './OptionBtn';
 import useCounter from '../../../hooks/useCounter';
 import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
+import ResultText from '../../ui/Game/ResultText';
 
 const options = ['✊', '✋', '✌'];
 
@@ -81,7 +82,7 @@ export default function RockPaperScissors({ game, score, setScore }: GameProps) 
   return (
     <>
       {gameRunning && (
-        <div className="flex flex-col flex-wrap items-center justify-evenly gap-16 md:flex-row">
+        <section className="flex flex-col flex-wrap items-center justify-evenly gap-16 md:flex-row">
           <OptionBtn
             title="rock"
             pick="✊"
@@ -106,14 +107,12 @@ export default function RockPaperScissors({ game, score, setScore }: GameProps) 
             }}
             borderColor={getPickStyle('✌')}
           />
-        </div>
+        </section>
       )}
       {!gameRunning && (
         <Closure onClick={() => setGameRunning(true)} color={game.color} score={score}>
           <div className="flex flex-col items-center justify-center gap-8">
-            <p className="text-center text-5xl font-medium" style={{ color: game.color }}>
-              {result.toLocaleUpperCase()}
-            </p>
+            <ResultText text={result} color={game.color} />
             <div className="my-8 flex flex-col flex-wrap content-center items-center justify-center gap-6 sm:my-16 sm:flex-row sm:gap-8">
               <OptionBtn
                 title={picks.player}
