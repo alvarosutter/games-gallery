@@ -15,7 +15,7 @@ export default function Cover({ game, onClick }: CoverProps) {
     <section className="flex flex-col items-center justify-center gap-8 p-4">
       <GameLogo name={name} href={href} src={logo} alt={name} />
       <p className="m-1 p-2 text-center text-lg">{description}</p>
-      <div className="flex flex-col items-start justify-center gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-center justify-center gap-8 sm:flex-row sm:items-center sm:justify-between sm:gap-32">
         <ScoreBox score={score} color={color} />
         <PlayButton text="play game" color={color} onClick={onClick} />
       </div>

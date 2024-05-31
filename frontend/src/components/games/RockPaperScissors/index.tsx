@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 
+import OptionBtn from './OptionBtn';
 import useCounter from '../../../hooks/useCounter';
 import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
+
+const options = ['✊', '✋', '✌'];
 
 function getPickStyle(pick: string) {
   if (pick === '✊') return '#FF914D';
@@ -11,11 +14,16 @@ function getPickStyle(pick: string) {
   return '#38b6ff';
 }
 
-interface GameProps {
+function generatePick() {
+  const randomNumber = Math.floor(Math.random() * options.length);
+  return options[randomNumber];
+}
+
+type GameProps = {
   game: { name: string; color: string };
   score: Score;
   setScore: (score: Score) => void;
-}
+};
 
 export default function RockPaperScissors({ game, score, setScore }: GameProps) {
   const [gameRunning, setGameRunning] = useState(true);
@@ -25,11 +33,8 @@ export default function RockPaperScissors({ game, score, setScore }: GameProps) 
   const { counter: draw, increment: incrementDraw } = useCounter(score.draw);
   const { counter: lost, increment: incrementLost } = useCounter(score.lost);
 
-  const options = ['✊', '✋', '✌'];
-
   function check(playerPick: string) {
-    const randomNumber = Math.floor(Math.random() * options.length);
-    const pcPick = options[randomNumber];
+    const pcPick = generatePick();
     setPicks({ player: playerPick, pc: pcPick });
 
     if (playerPick === pcPick) {
@@ -76,51 +81,53 @@ export default function RockPaperScissors({ game, score, setScore }: GameProps) 
   return (
     <>
       {gameRunning && (
-        <div>
-          <button
-            type="button"
+        <div className="flex flex-col flex-wrap items-center justify-evenly gap-16 md:flex-row">
+          <OptionBtn
             title="rock"
+            pick="✊"
             onClick={() => {
               check('✊');
             }}
-            style={{ borderColor: `${getPickStyle('✊')}` }}
-          >
-            ✊
-          </button>
-          <button
-            type="button"
+            borderColor={getPickStyle('✊')}
+          />
+          <OptionBtn
             title="paper"
+            pick="✋"
             onClick={() => {
               check('✋');
             }}
-            style={{ borderColor: `${getPickStyle('✋')}` }}
-          >
-            ✋
-          </button>
-          <button
-            type="button"
+            borderColor={getPickStyle('✋')}
+          />
+          <OptionBtn
             title="scissors"
+            pick="✌"
             onClick={() => {
               check('✌');
             }}
-            style={{ borderColor: `${getPickStyle('✌')}` }}
-          >
-            ✌
-          </button>
+            borderColor={getPickStyle('✌')}
+          />
         </div>
       )}
       {!gameRunning && (
         <Closure onClick={() => setGameRunning(true)} color={game.color} score={score}>
-          <div>
-            <p style={{ color: game.color }}>{result.toLocaleUpperCase()}</p>
-            <div>
-              <div title={picks.player} style={{ borderColor: `${getPickStyle(picks.player)}` }}>
-                {picks.player}
-              </div>
-              <p>VS</p>
-              <div title={picks.player} style={{ borderColor: `${getPickStyle(picks.pc)}` }}>
-                {picks.pc}
-              </div>
+          <div className="flex flex-col items-center justify-center gap-8">
+            <p className="text-center text-5xl font-medium" style={{ color: game.color }}>
+              {result.toLocaleUpperCase()}
+            </p>
+            <div className="my-8 flex flex-col flex-wrap content-center items-center justify-center gap-6 sm:my-16 sm:flex-row sm:gap-8">
+              <OptionBtn
+                title={picks.player}
+                pick={picks.player}
+                borderColor={getPickStyle(picks.player)}
+                disable
+              />
+              <p className="text-center text-5xl">VS</p>
+              <OptionBtn
+                title={picks.pc}
+                pick={picks.pc}
+                borderColor={getPickStyle(picks.pc)}
+                disable
+              />
             </div>
           </div>
         </Closure>

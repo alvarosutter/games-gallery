@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang={locale} className={`${inter.variable}`} suppressHydrationWarning>
       <body className="flex min-h-svh flex-col items-center justify-start bg-[#121212] font-inter text-[#F5F5F5] antialiased">
         <Header />
-        <main className="my-6 w-full max-w-[80%] ">{children}</main>
+        <main className="my-8 w-full max-w-[80%] sm:my-16">{children}</main>
         <Footer />
       </body>
     </html>
