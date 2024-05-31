@@ -4,6 +4,7 @@ import OptionBtn from './OptionBtn';
 import useCounter from '../../../hooks/useCounter';
 import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
+import ResultContainer from '../../ui/Game/ResultContainer';
 import ResultText from '../../ui/Game/ResultText';
 
 const options = ['✊', '✋', '✌'];
@@ -111,7 +112,7 @@ export default function RockPaperScissors({ game, score, setScore }: GameProps) 
       )}
       {!gameRunning && (
         <Closure onClick={() => setGameRunning(true)} color={game.color} score={score}>
-          <div className="mb-12 flex flex-col items-center justify-center gap-8">
+          <ResultContainer>
             <ResultText text={result} color={game.color} />
             <div className="mt-4 flex flex-col flex-wrap content-center items-center justify-center gap-4 sm:my-12 sm:flex-row sm:gap-8">
               <OptionBtn
@@ -128,7 +129,7 @@ export default function RockPaperScissors({ game, score, setScore }: GameProps) 
                 disable
               />
             </div>
-          </div>
+          </ResultContainer>
         </Closure>
       )}
     </>

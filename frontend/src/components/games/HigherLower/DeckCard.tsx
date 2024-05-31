@@ -1,4 +1,4 @@
-import type { Card } from './higherlower.utils';
+import type { Card } from './higherLower.utils';
 
 type CardProps = {
   card: Card;

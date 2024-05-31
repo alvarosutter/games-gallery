@@ -5,6 +5,7 @@ import useCounter from '../../../hooks/useCounter';
 import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
 import PlayButton from '../../ui/Game/PlayButton';
+import ResultContainer from '../../ui/Game/ResultContainer';
 import ResultText from '../../ui/Game/ResultText';
 import ScoreText from '../../ui/Game/ScoreText';
 
@@ -65,11 +66,11 @@ export default function PigGame({ game, score, setScore }: GameProps) {
       )}
       {!gameRunning && (
         <Closure onClick={handlePlayAgain} color={game.color} score={score}>
-          <div className="mb-12 flex flex-col items-center justify-center gap-8">
+          <ResultContainer>
             <ResultText text="game over!" color={game.color} />
             <ScoreText score={counter} />
             <Image src={`/dices/dice-${dice}.png`} alt={dice.toString()} width={150} height={150} />
-          </div>
+          </ResultContainer>
         </Closure>
       )}
     </>

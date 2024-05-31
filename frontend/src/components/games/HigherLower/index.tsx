@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 
 import DeckCard from './DeckCard';
-import type { Card } from './higherlower.utils';
-import { spades, hearts, diamonds, clubs } from './higherlower.utils';
+import type { Card } from './higherLower.utils';
+import { spades, hearts, diamonds, clubs } from './higherLower.utils';
 import useCounter from '../../../hooks/useCounter';
 import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
 import PlayButton from '../../ui/Game/PlayButton';
+import ResultContainer from '../../ui/Game/ResultContainer';
 import ResultText from '../../ui/Game/ResultText';
 import ScoreText from '../../ui/Game/ScoreText';
 
@@ -87,11 +88,11 @@ export default function HigherLowerGame({ game, score, setScore }: GameProps) {
       )}
       {!gameRunning && (
         <Closure onClick={handlePlayAgain} color={game.color} score={score}>
-          <div className="mb-12 flex flex-col items-center justify-center gap-8">
+          <ResultContainer>
             <ResultText text={result ? 'you win!' : 'game over!'} color={game.color} />
             <ScoreText score={counter} />
             {!result && <DeckCard card={card} />}
-          </div>
+          </ResultContainer>
         </Closure>
       )}
     </>

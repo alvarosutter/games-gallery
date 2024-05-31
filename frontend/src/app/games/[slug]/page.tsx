@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+import DicePokerGame from '../../../components/games/DicePoker';
 import HigherLowerGame from '../../../components/games/HigherLower';
 import PigGame from '../../../components/games/PigGame';
 import RockPaperScissors from '../../../components/games/RockPaperScissors';
@@ -31,7 +32,7 @@ export default function Main() {
       case 'piggame':
         return <PigGame game={game} score={savedScore} setScore={setScore} />;
       case 'dicepoker':
-        return <p>{name}</p>;
+        return <DicePokerGame game={game} score={savedScore} setScore={setScore} />;
       case 'hangman':
         return <p>{name}</p>;
       case 'simongame':
