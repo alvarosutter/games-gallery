@@ -111,9 +111,9 @@ export default function RockPaperScissors({ game, score, setScore }: GameProps) 
       )}
       {!gameRunning && (
         <Closure onClick={() => setGameRunning(true)} color={game.color} score={score}>
-          <div className="flex flex-col items-center justify-center gap-8">
+          <div className="mb-12 flex flex-col items-center justify-center gap-8">
             <ResultText text={result} color={game.color} />
-            <div className="my-8 flex flex-col flex-wrap content-center items-center justify-center gap-6 sm:my-16 sm:flex-row sm:gap-8">
+            <div className="mt-4 flex flex-col flex-wrap content-center items-center justify-center gap-4 sm:my-12 sm:flex-row sm:gap-8">
               <OptionBtn
                 title={picks.player}
                 pick={picks.player}

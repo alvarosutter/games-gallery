@@ -8,6 +8,7 @@ import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
 import PlayButton from '../../ui/Game/PlayButton';
 import ResultText from '../../ui/Game/ResultText';
+import ScoreText from '../../ui/Game/ScoreText';
 
 type GameProps = {
   game: { name: string; color: string };
@@ -88,7 +89,7 @@ export default function HigherLowerGame({ game, score, setScore }: GameProps) {
         <Closure onClick={handlePlayAgain} color={game.color} score={score}>
           <div className="mb-12 flex flex-col items-center justify-center gap-8">
             <ResultText text={result ? 'you win!' : 'game over!'} color={game.color} />
-            <p className="text-center text-4xl">{`Score: ${counter}`}</p>
+            <ScoreText score={counter} />
             {!result && <DeckCard card={card} />}
           </div>
         </Closure>

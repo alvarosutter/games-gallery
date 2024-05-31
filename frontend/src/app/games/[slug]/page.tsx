@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import HigherLowerGame from '../../../components/games/HigherLower';
+import PigGame from '../../../components/games/PigGame';
 import RockPaperScissors from '../../../components/games/RockPaperScissors';
 import Cover from '../../../components/ui/Game/Cover';
 import useLocalStorage from '../../../hooks/useLocalStorage';
@@ -28,7 +29,7 @@ export default function Main() {
       case 'higherlower':
         return <HigherLowerGame game={game} score={savedScore} setScore={setScore} />;
       case 'piggame':
-        return <p>{name}</p>;
+        return <PigGame game={game} score={savedScore} setScore={setScore} />;
       case 'dicepoker':
         return <p>{name}</p>;
       case 'hangman':
