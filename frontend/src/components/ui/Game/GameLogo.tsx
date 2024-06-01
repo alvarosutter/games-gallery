@@ -15,7 +15,7 @@ export default function GameLogo({ name, href, src, alt }: GameLogoProps) {
       aria-label={`Go to game ${name}`}
       href={href}
     >
-      <Image src={src} alt={alt} width={288} height={144} />
+      <Image src={src} alt={alt} width={288} height={144} priority />
     </Link>
   );
 }

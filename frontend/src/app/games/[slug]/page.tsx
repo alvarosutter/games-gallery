@@ -9,6 +9,7 @@ import HigherLower from '../../../components/games/HigherLower';
 import Memory from '../../../components/games/Memory';
 import PigGame from '../../../components/games/PigGame';
 import RockPaperScissors from '../../../components/games/RockPaperScissors';
+import SimonGame from '../../../components/games/SimonGame';
 import Cover from '../../../components/ui/Game/Cover';
 import useLocalStorage from '../../../hooks/useLocalStorage';
 import type { Game } from '../../../types/game';
@@ -43,7 +44,7 @@ export default function Main() {
       case 'hangman':
         return <Hangman game={game} score={savedScore} setScore={setScore} />;
       case 'simongame':
-        return <p>{name}</p>;
+        return <SimonGame game={game} score={savedScore} setScore={setScore} />;
       case 'memory':
         return <Memory game={game} score={savedScore} setScore={setScore} />;
       default:

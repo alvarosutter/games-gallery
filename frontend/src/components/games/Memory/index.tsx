@@ -7,6 +7,7 @@ import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
 import ResultContainer from '../../ui/Game/ResultContainer';
 import ResultText from '../../ui/Game/ResultText';
+import ScoreText from '../../ui/Game/ScoreText';
 
 type GameProps = {
   game: { name: string; color: string };
@@ -109,7 +110,7 @@ export default function Memory({ game, score, setScore }: GameProps) {
         >
           <ResultContainer>
             <ResultText text="you win!" color={game.color} />
-            <p className="text-center text-4xl">{`Turns: ${turns - 1}`}</p>
+            <ScoreText score={turns - 1} text="Turns" />
           </ResultContainer>
         </Closure>
       )}
