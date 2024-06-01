@@ -17,7 +17,7 @@ type GameProps = {
   setScore: (score: Score) => void;
 };
 
-export default function HigherLowerGame({ game, score, setScore }: GameProps) {
+export default function HigherLower({ game, score, setScore }: GameProps) {
   const [gameRunning, setGameRunning] = useState(true);
   const { counter, increment, reset } = useCounter();
   const [result, setResult] = useState(false);

@@ -16,7 +16,7 @@ type GameProps = {
   setScore: (score: Score) => void;
 };
 
-export default function DicePokerGame({ game, score, setScore }: GameProps) {
+export default function DicePoker({ game, score, setScore }: GameProps) {
   const [gameRunning, setGameRunning] = useState(true);
   const [result, setResult] = useState({ res: '', player: '', pc: '' });
   const { counter: win, increment: incrementWin } = useCounter(score.win);

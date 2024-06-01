@@ -3,8 +3,9 @@
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import DicePokerGame from '../../../components/games/DicePoker';
-import HigherLowerGame from '../../../components/games/HigherLower';
+import DicePoker from '../../../components/games/DicePoker';
+import Hangman from '../../../components/games/Hangman';
+import HigherLower from '../../../components/games/HigherLower';
 import Memory from '../../../components/games/Memory';
 import PigGame from '../../../components/games/PigGame';
 import RockPaperScissors from '../../../components/games/RockPaperScissors';
@@ -34,13 +35,13 @@ export default function Main() {
       case 'rockpaperscissors':
         return <RockPaperScissors game={game} score={savedScore} setScore={setScore} />;
       case 'higherlower':
-        return <HigherLowerGame game={game} score={savedScore} setScore={setScore} />;
+        return <HigherLower game={game} score={savedScore} setScore={setScore} />;
       case 'piggame':
         return <PigGame game={game} score={savedScore} setScore={setScore} />;
       case 'dicepoker':
-        return <DicePokerGame game={game} score={savedScore} setScore={setScore} />;
+        return <DicePoker game={game} score={savedScore} setScore={setScore} />;
       case 'hangman':
-        return <p>{name}</p>;
+        return <Hangman game={game} score={savedScore} setScore={setScore} />;
       case 'simongame':
         return <p>{name}</p>;
       case 'memory':
