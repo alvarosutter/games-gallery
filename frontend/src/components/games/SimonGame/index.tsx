@@ -168,7 +168,7 @@ export default function SimonGame({ game, score, setScore }: GameProps) {
           score={score}
         >
           <ResultContainer>
-            <ResultText text={result ? 'YOU WIN!' : 'YOU LOSE!'} color={game.color} />
+            <ResultText text={result ? 'you win!' : 'you lose!'} color={game.color} />
             <ScoreText score={counter} text="Level" />
           </ResultContainer>
         </Closure>

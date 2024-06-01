@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import DeckCard from './DeckCard';
-import type { Card } from './higherLower.utils';
-import { spades, hearts, diamonds, clubs } from './higherLower.utils';
+import type { Card } from './highLow.utils';
+import { spades, hearts, diamonds, clubs } from './highLow.utils';
 import useCounter from '../../../hooks/useCounter';
 import type { Score } from '../../../types/score';
 import Closure from '../../ui/Game/Closure';
